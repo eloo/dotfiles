@@ -1,7 +1,7 @@
 # Ubuntu specific dotfile for zsh
 
 # default aliases
-alias editubuntu='nano ~/dotfiles/ubuntu.zsh && source ~/dotfiles/ubuntu.zsh'
+alias editubuntu='nano ~/dotfiles/.ubuntu && source ~/dotfiles/.ubuntu'
 
 ## Apt aliases
 alias aptinst='sudo apt-get install'

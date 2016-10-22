@@ -1,0 +1,11 @@
+#! /bin/zsh
+
+# Global dotfiles dotfile
+unamestr=`uname -a`
+
+## Load ubuntu dotfile 
+if [[ "$unamestr" == *"Ubuntu"* ]]
+then
+  source ~/dotfiles/.ubuntu
+  echo "loaded ubuntu"
+fi
