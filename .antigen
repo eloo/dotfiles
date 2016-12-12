@@ -24,5 +24,6 @@ antigen bundle rupa/z
 antigen bundle pip
 antigen bundle zsh-users/zsh-completions
 antigen bundle extract
+antigen bundle sublime
 # antigen bundle git-extras
 # antigen bundle git-flow
