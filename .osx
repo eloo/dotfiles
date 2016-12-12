@@ -1,0 +1,13 @@
+# OS X Antigen configuration
+
+#
+# Antigen bundles
+#
+
+#antigen bundle brew
+antigen bundle brew-cask
+antigen bundle gem
+antigen bundle osx
+
+# Full brew update
+alias brew_update="brew -v update; brew upgrade --force-bottle --cleanup; brew cleanup; brew cask cleanup; brew prune; brew doctor"

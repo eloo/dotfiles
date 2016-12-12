@@ -1,11 +1,41 @@
 #! /bin/zsh
 
+# Load 256 color
+export TERM="xterm-256color"
+
+# Load Antigen
+[ -f ~/dotfiles/antigen.zsh ] && source ~/dotfiles/antigen.zsh || echo "Antigen not found"
+
+# Load Antigen config
+[ -f ~/dotfiles/.antigen ] && source ~/dotfiles/.antigen
+
 # Global dotfiles dotfile
-unamestr=`uname -a`
+CURRENT_OS=`uname`
 
 ## Load ubuntu dotfile 
 if [[ "$unamestr" == *"Ubuntu"* ]]
 then
   source ~/dotfiles/.ubuntu
-  echo "loaded ubuntu"
 fi
+
+# OS specific plugins
+if [[ $CURRENT_OS == 'OS X' ]]; then
+    
+    [ -f ~/dotfiles/.osx ] && source ~/dotfiles/.osx
+
+elif [[ $CURRENT_OS == 'Linux' ]]; then
+	DISTRO=`uname -a`
+    
+    if [[ $DISTRO == *'Ubuntu'* ]]; then
+        [ -f ~/dotfiles/.ubuntu ] && source ~/dotfiles/.ubuntu
+    fi
+fi
+
+## Load local dotfile if existing
+[ -f ~/dotfiles/.local ] && source ~/dotfiles/.local
+
+
+[ -f ~/dotfiles/.functions ] && source ~/dotfiles/.functions
+
+[ -f ~/dotfiles/.aliases ] && source ~/dotfiles/.aliases
+

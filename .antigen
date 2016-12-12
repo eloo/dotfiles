@@ -1,0 +1,28 @@
+# Global Antigen configuration
+
+#
+# Load various lib files
+#
+
+antigen bundle robbyrussell/oh-my-zsh lib/
+
+#
+# Antigen theme
+#
+
+#antigen theme bhilburn/powerlevel9k powerlevel9k
+antigen theme wesbos/Cobalt2-iterm cobalt2.zsh-theme
+antigen apply
+
+#
+# Antigen Bundles
+#
+
+antigen bundle git
+antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle rupa/z
+antigen bundle pip
+antigen bundle zsh-users/zsh-completions
+antigen bundle extract
+# antigen bundle git-extras
+# antigen bundle git-flow
