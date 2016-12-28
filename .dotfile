@@ -1,4 +1,7 @@
-#! /bin/zsh
+#
+# This is the main dotfiles which will source all other dotfiles.
+# Only this file must be sourced in your ~/.zshrc
+#
 
 # Load 256 color
 export TERM="xterm-256color"
@@ -6,8 +9,13 @@ export TERM="xterm-256color"
 # Load Antigen
 [ -f ~/dotfiles/antigen.zsh ] && source ~/dotfiles/antigen.zsh || echo "Antigen not found"
 
-# Load Antigen config
-[ -f ~/dotfiles/.antigen ] && source ~/dotfiles/.antigen
+# Load our dotfiles like ~/.antigen, etc…
+#   ~/dotfiles/.extra and ~/dotfiles/.local can be used for settings you don’t want to commit,
+#   Use it to configure your PATH, thus it being first in line.
+for file in ~/dotfiles/.{extra,local,antigen,exports,aliases,functions}; do
+    [ -r "$file" ] && source "$file"
+done
+unset file
 
 # Global dotfiles dotfile
 CURRENT_OS=`uname`
@@ -19,7 +27,7 @@ then
 fi
 
 # OS specific plugins
-if [[ $CURRENT_OS == 'OS X' ]]; then
+if [[ $CURRENT_OS == 'Darwin' ]]; then
     
     [ -f ~/dotfiles/.osx ] && source ~/dotfiles/.osx
 
@@ -30,12 +38,3 @@ elif [[ $CURRENT_OS == 'Linux' ]]; then
         [ -f ~/dotfiles/.ubuntu ] && source ~/dotfiles/.ubuntu
     fi
 fi
-
-## Load local dotfile if existing
-[ -f ~/dotfiles/.local ] && source ~/dotfiles/.local
-
-
-[ -f ~/dotfiles/.functions ] && source ~/dotfiles/.functions
-
-[ -f ~/dotfiles/.aliases ] && source ~/dotfiles/.aliases
-

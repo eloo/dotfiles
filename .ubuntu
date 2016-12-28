@@ -3,7 +3,14 @@
 #
 # Antigen bundles
 #
+
 antigen bundle ubuntu
+
+#
+# Ubuntu specific aliases
+#
+
+alias ls='gls -AFh ${colorflag} --group-directories-first'
 
 # default aliases
 alias editubuntu='nano ~/dotfiles/.ubuntu && source ~/dotfiles/.ubuntu'
