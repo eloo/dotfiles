@@ -26,7 +26,7 @@ if [[ $CURRENT_OS == 'Darwin' ]]; then
     [ -f ~/dotfiles/.osx ] && source ~/dotfiles/.osx
 
 elif [[ $CURRENT_OS == 'Linux' ]]; then
-	DISTRO=`uname -a`
+	DISTRO=`cat /etc/*-release`
     
     # Load ubuntu specific stuff (and for debian as there isn't much atm)
     if [[ $DISTRO == *'Ubuntu'* || $DISTRO == *'Debian'* ]]; then
