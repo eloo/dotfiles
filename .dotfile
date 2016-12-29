@@ -17,14 +17,8 @@ for file in ~/dotfiles/.{extra,local,antigen,exports,aliases,functions}; do
 done
 unset file
 
-# Global dotfiles dotfile
+# Get OS name
 CURRENT_OS=`uname`
-
-## Load ubuntu dotfile 
-if [[ "$unamestr" == *"Ubuntu"* ]]
-then
-  source ~/dotfiles/.ubuntu
-fi
 
 # OS specific plugins
 if [[ $CURRENT_OS == 'Darwin' ]]; then
@@ -34,7 +28,8 @@ if [[ $CURRENT_OS == 'Darwin' ]]; then
 elif [[ $CURRENT_OS == 'Linux' ]]; then
 	DISTRO=`uname -a`
     
-    if [[ $DISTRO == *'Ubuntu'* ]]; then
+    # Load ubuntu specific stuff (and for debian as there isn't much atm)
+    if [[ $DISTRO == *'Ubuntu'* || $DISTRO == *'Debian'* ]]; then
         [ -f ~/dotfiles/.ubuntu ] && source ~/dotfiles/.ubuntu
     fi
 fi
