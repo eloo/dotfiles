@@ -190,3 +190,9 @@ function code () { VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCodeInsiders" -
 shellswitch () {
 	chsh -s $(brew --prefix)/bin/$1
 }
+
+# create directory and enter it
+function mkcd () {
+    mkdir -p "$*"
+    cd "$*"
+}
