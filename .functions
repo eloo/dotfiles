@@ -196,3 +196,10 @@ function mkcd () {
     mkdir -p "$*"
     cd "$*"
 }
+
+# Override antigen-selfupdate
+function antigen-selfupdate(){
+	wget 'https://raw.githubusercontent.com/zsh-users/antigen/master/bin/antigen.zsh' -O ~/dotfiles/antigen.zsh.tmp 
+	mv ~/dotfiles/antigen.zsh.tmp ~/dotfiles/antigen.zsh
+	source ~/dotfiles/antigen.zsh
+}

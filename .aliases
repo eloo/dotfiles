@@ -20,3 +20,6 @@ alias c='pygmentize -O style=monokai -f console256 -g'
 
 # Find string in path
 alias finds='grep -rnw . -e $1'
+
+# Reload .zshrc
+alias reload_zshrc='source ~/.zshrc'
