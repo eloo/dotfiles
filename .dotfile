@@ -7,7 +7,9 @@
 export TERM="xterm-256color"
 
 # Load Antigen
-[ -f ~/dotfiles/antigen.zsh ] && source ~/dotfiles/antigen.zsh || wget 'https://raw.githubusercontent.com/zsh-users/antigen/master/bin/antigen.zsh' -O ~/dotfiles/antigen.zsh.tmp ;	mv ~/dotfiles/antigen.zsh.tmp ~/dotfiles/antigen.zsh
+[ ! -f ~/dotfiles/antigen.zsh ] && wget 'https://raw.githubusercontent.com/zsh-users/antigen/master/bin/antigen.zsh' -O ~/dotfiles/antigen.zsh
+source ~/dotfiles/antigen.zsh
+
 
 # Load our dotfiles like ~/.antigen, etc…
 #   ~/dotfiles/.extra and ~/dotfiles/.local can be used for settings you don’t want to commit,
