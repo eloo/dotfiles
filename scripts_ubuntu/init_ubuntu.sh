@@ -2,10 +2,10 @@
 
 cd ~
 # Update and upgrade distro
-sudo apt-get update && sudo apt-get dist-upgrade
+sudo apt-get update && sudo apt-get dist-upgrade -y
 
 # Install git and zsh
-sudo apt-get install git zsh
+sudo apt-get install git zsh -y
 chsh -s /bin/zsh
 
 # Download, install and delete powerline fonts
