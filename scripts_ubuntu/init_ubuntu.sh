@@ -4,8 +4,8 @@ cd ~
 # Update and upgrade distro
 sudo apt-get update && sudo apt-get dist-upgrade -y
 
-# Install git and zsh
-sudo apt-get install git zsh -y
+# Install some basic tools
+sudo apt-get install git zsh software-properties-common	 -y
 chsh -s /bin/zsh
 
 # Download, install and delete powerline fonts
@@ -23,3 +23,13 @@ antigen-selfupdate
 antigen-update
 antigen
 exit
+
+#
+# Add additional PPA's
+#
+
+# IntelliJ IDEA
+sudo add-apt-repository ppa:mmk2410/intellij-idea-community
+sudo add-apt-repository ppa:webupd8team/sublime-text-3
+
+sudo apt-get update
