@@ -3,6 +3,9 @@
 # Only this file must be sourced in your ~/.zshrc
 #
 
+# Update dotfiles
+cd dotfiles ; git pull > /dev/null
+
 # Load 256 color
 export TERM="xterm-256color"
 
