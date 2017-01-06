@@ -22,4 +22,9 @@ alias c='pygmentize -O style=monokai -f console256 -g'
 alias finds='grep -rnw . -e $1'
 
 # Reload .zshrc
-alias reload_zshrc='source ~/.zshrc'
+alias reload-zshrc='source ~/.zshrc'
+
+# Some vagrant aliases
+alias vup='vagrant up'
+alias vssh='vagrant ssh'
+alias vh='vagrant halt'
