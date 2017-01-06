@@ -5,7 +5,7 @@ cd ~
 sudo apt-get update && sudo apt-get dist-upgrade -y
 
 # Install some basic tools
-sudo apt-get install git zsh software-properties-common	 -y
+sudo apt-get install git zsh python-software-properties	 -y
 chsh -s /bin/zsh
 
 # Download, install and delete powerline fonts
@@ -30,6 +30,11 @@ exit
 
 # IntelliJ IDEA
 sudo add-apt-repository ppa:mmk2410/intellij-idea-community
+
+# Sublime Text3
 sudo add-apt-repository ppa:webupd8team/sublime-text-3
+
+# Oracle java installer
+sudo add-apt-repository ppa:webupd8team/java
 
 sudo apt-get update
