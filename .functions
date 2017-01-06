@@ -203,3 +203,33 @@ function antigen-selfupdate(){
 	mv ~/dotfiles/antigen.zsh.tmp ~/dotfiles/antigen.zsh
 	source ~/dotfiles/antigen.zsh
 }
+
+# Removes audio tracks from mkv files
+# see https://www.reddit.com/r/usenet/comments/2ofcv5/remove_unwanted_audiosubtitles_from_mkv/
+function mkv_remove_audio(){
+	find -iname '*.mkv' -type f -exec ~/dotfiles/helpers/mkvmerge-remove-atracks.awk {} "$@" \;
+}
+
+function disk-backup(){
+	target_name=$2.$(date +%Y-%m-%d_%H-%M-%S).img.gz
+	echo "Create backup of $1 to $target_name"
+	pipe="cat"
+	if hash pv 2>/dev/null; then
+		pipe=pv
+	fi
+	sudo dd if=$1 conv=sync,noerror bs=64K | $pipe | gzip -c  > $target_name
+	echo "Backup created at $target_name"
+}
+
+function disk-restore(){
+	echo "Restore image $1 to $2"
+	pipe="cat"
+	if hash pv 2>/dev/null; then
+		pipe=pv
+	fi
+	sudo gunzip -c $1 | $pipe | dd of=$2
+}
+
+function count_extensions () {
+	find $1 -type f | grep -E ".*\.[a-zA-Z0-9]*$" | sed -e 's/.*\(\.[a-zA-Z0-9]*\)$/\1/' | sort | uniq -c | sort -nr
+}
