@@ -1,6 +1,12 @@
 # OS X Antigen configuration
 
 #
+# Exports
+#
+export JAVA_HOME=$(/usr/libexec/java_home)
+
+
+#
 # Antigen bundles
 #
 
