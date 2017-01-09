@@ -3,11 +3,16 @@
 # Only this file must be sourced in your ~/.zshrc
 #
 
+# Update dotfiles
+sh -c 'cd ~/dotfiles && git pull > /dev/null'
+
 # Load 256 color
 export TERM="xterm-256color"
 
 # Load Antigen
-[ -f ~/dotfiles/antigen.zsh ] && source ~/dotfiles/antigen.zsh || echo "Antigen not found"
+[ ! -f ~/dotfiles/antigen.zsh ] && wget 'https://raw.githubusercontent.com/zsh-users/antigen/master/bin/antigen.zsh' -O ~/dotfiles/antigen.zsh
+source ~/dotfiles/antigen.zsh
+
 
 # Load our dotfiles like ~/.antigen, etc…
 #   ~/dotfiles/.extra and ~/dotfiles/.local can be used for settings you don’t want to commit,
@@ -17,14 +22,8 @@ for file in ~/dotfiles/.{extra,local,antigen,exports,aliases,functions}; do
 done
 unset file
 
-# Global dotfiles dotfile
+# Get OS name
 CURRENT_OS=`uname`
-
-## Load ubuntu dotfile 
-if [[ "$unamestr" == *"Ubuntu"* ]]
-then
-  source ~/dotfiles/.ubuntu
-fi
 
 # OS specific plugins
 if [[ $CURRENT_OS == 'Darwin' ]]; then
@@ -32,9 +31,10 @@ if [[ $CURRENT_OS == 'Darwin' ]]; then
     [ -f ~/dotfiles/.osx ] && source ~/dotfiles/.osx
 
 elif [[ $CURRENT_OS == 'Linux' ]]; then
-	DISTRO=`uname -a`
+	DISTRO=`cat /etc/*-release`
     
-    if [[ $DISTRO == *'Ubuntu'* ]]; then
+    # Load ubuntu specific stuff (and for debian as there isn't much atm)
+    if [[ $DISTRO == *'Ubuntu'* || $DISTRO == *'Debian'* ]]; then
         [ -f ~/dotfiles/.ubuntu ] && source ~/dotfiles/.ubuntu
     fi
 fi
