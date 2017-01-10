@@ -4,7 +4,12 @@
 #
 
 # Update dotfiles
-sh -c 'cd ~/dotfiles && git pull > /dev/null'
+# Check return value to see if there are incoming updates.
+(cd ~/dotfiles;
+if [ `git rev-list origin/master..HEAD | wc -l` -gt 0 ]; then
+	git pull
+fi
+)
 
 # Load 256 color
 export TERM="xterm-256color"
@@ -13,11 +18,10 @@ export TERM="xterm-256color"
 [ ! -f ~/dotfiles/antigen.zsh ] && wget 'https://raw.githubusercontent.com/zsh-users/antigen/master/bin/antigen.zsh' -O ~/dotfiles/antigen.zsh
 source ~/dotfiles/antigen.zsh
 
-
 # Load our dotfiles like ~/.antigen, etc…
 #   ~/dotfiles/.extra and ~/dotfiles/.local can be used for settings you don’t want to commit,
 #   Use it to configure your PATH, thus it being first in line.
-for file in ~/dotfiles/.{extra,local,antigen,exports,aliases,functions}; do
+for file in ~/dotfiles/.{antigen,extra,local,exports,aliases,functions}; do
     [ -r "$file" ] && source "$file"
 done
 unset file
