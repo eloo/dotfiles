@@ -1,7 +1,6 @@
 # Aliases
 
 ###
-# time to upgrade `ls`
 
 # use coreutils `ls` if possible…
 hash gls >/dev/null 2>&1 || alias gls="ls"
@@ -31,3 +30,6 @@ alias reload-zshrc='source ~/.zshrc'
 alias vup='vagrant up'
 alias vssh='vagrant ssh'
 alias vh='vagrant halt'
+
+# Check zsh loadtime
+alias time-zsh='time zsh -i -c exit'
