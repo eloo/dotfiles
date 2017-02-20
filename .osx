@@ -11,7 +11,6 @@ export JAVA_HOME=$(/usr/libexec/java_home)
 #
 
 antigen bundle brew
-antigen bundle cask
 antigen bundle gem
 antigen bundle osx
 
@@ -23,3 +22,4 @@ alias brew_update="brew -v update; brew upgrade --force-bottle --cleanup; brew c
 #
 
 alias ll='ls -alhG'
+alias ports='lsof -nPl -iTCP -sTCP:LISTEN'
