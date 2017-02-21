@@ -5,17 +5,19 @@ cd ~
 sudo apt-get update && sudo apt-get dist-upgrade -y
 
 # Install some basic tools
-sudo apt-get install git zsh python-software-properties	 -y
+sudo apt-get install git zsh python-software-properties software-properties-common	-y
 chsh -s /bin/zsh
 
 # Download, install and delete powerline fonts
-git clone https://github.com/powerline/fonts.git
-fonts/install.sh
-rm -rf fonts
+#git clone https://github.com/powerline/fonts.git
+#fonts/install.sh
+#rm -rf fonts
 
 # Download dotfiles
 git clone https://github.com/Eloo/dotfiles.git
 echo "source ~/dotfiles/.dotfile" > .zshrc
+chmod u+x ~/dotfiles/helpers/install_awesomefonts.sh
+~/dotfiles/helpers/install_awesomefonts.sh
 
 # Let zsh init itself and update
 zsh

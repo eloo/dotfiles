@@ -31,6 +31,9 @@ alias vup='vagrant up'
 alias vssh='vagrant ssh'
 alias vh='vagrant halt'
 
+# Disk speed test
+alias test-write-speed='dd if=/dev/zero of=testfile bs=1G count=1 oflag=direct'
+
 # Check zsh loadtime
 alias time-zsh='time zsh -i -c exit'
 
