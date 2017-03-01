@@ -94,14 +94,15 @@ function whois() {
 }
 
 function localip(){
-	function _localip(){ echo "📶  "$(ipconfig getifaddr "$1"); }
-	export -f _localip
-	local purple="\x1B\[35m" reset="\x1B\[m"
-	networksetup -listallhardwareports | \
-		sed -r "s/Hardware Port: (.*)/${purple}\1${reset}/g" | \
-		sed -r "s/Device: (en.*)$/_localip \1/e" | \
-		sed -r "s/Ethernet Address:/📘 /g" | \
-		sed -r "s/(VLAN Configurations)|==*//g"
+#	function _localip(){ echo "📶  "$(ipconfig getifaddr "$1"); }
+#	export -f _localip
+#	local purple="\x1B\[35m" reset="\x1B\[m"
+#	networksetup -listallhardwareports | \
+#		sed -r "s/Hardware Port: (.*)/${purple}\1${reset}/g" | \
+#		sed -r "s/Device: (en.*)$/_localip \1/e" | \
+#		sed -r "s/Ethernet Address:/📘 /g" | \
+#		sed -r "s/(VLAN Configurations)|==*//g"
+	echo "📶  "$(ip addr show | grep "inet\b" | awk '{print $2}' | cut -d/ -f1)
 }
 
 # preview csv files. source: http://stackoverflow.com/questions/1875305/command-line-csv-viewer
@@ -227,7 +228,7 @@ function disk-restore(){
 	if hash pv 2>/dev/null; then
 		pipe=pv
 	fi
-	sudo gunzip -c $1 | $pipe | dd of=$2
+	sudo gunzip -c $1 | $pipe | sudo dd of=$2
 }
 
 function count_extensions () {
