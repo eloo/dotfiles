@@ -5,7 +5,7 @@ cd ~
 sudo apt-get update && sudo apt-get dist-upgrade -y
 
 # Install some basic tools
-sudo apt-get install git zsh python-software-properties	 -y
+sudo apt-get install git zsh python-software-properties software-properties-common	-y
 chsh -s /bin/zsh
 
 # Download, install and delete powerline fonts

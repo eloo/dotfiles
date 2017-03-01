@@ -21,7 +21,7 @@ alias c='pygmentize -O style=monokai -f console256 -g'
 alias pg='ps aux | grep -i '
 
 # Find string in path
-alias finds='grep -rnw . -e $1'
+alias finds='grep -rinw . -e $1'
 
 # Reload .zshrc
 alias reload-zshrc='source ~/.zshrc'
@@ -31,5 +31,10 @@ alias vup='vagrant up'
 alias vssh='vagrant ssh'
 alias vh='vagrant halt'
 
+# Disk speed test
+alias test-write-speed='dd if=/dev/zero of=testfile bs=1G count=1 oflag=direct'
+
 # Check zsh loadtime
 alias time-zsh='time zsh -i -c exit'
+
+eval "$(thefuck --alias)"
