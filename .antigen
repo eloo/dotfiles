@@ -6,7 +6,7 @@
 # Load various lib files
 #
 
-antigen bundle robbyrussell/oh-my-zsh lib/
+antigen use oh-my-zsh
 
 #
 # Antigen theme
@@ -47,6 +47,4 @@ antigen bundle nobeans/zsh-sdkman
 antigen bundle zsh-users/zsh-completions
 antigen bundle extract
 antigen bundle sublime
-antigen bundle vagrant
-# antigen bundle git-extras
-# antigen bundle git-flow
+#antigen bundle vagrant
