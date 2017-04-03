@@ -222,3 +222,8 @@ function disk-restore(){
 function count_extensions () {
 	find $1 -type f | grep -E ".*\.[a-zA-Z0-9]*$" | sed -e 's/.*\(\.[a-zA-Z0-9]*\)$/\1/' | sort | uniq -c | sort -nr
 }
+
+# Kill intellij prozesses
+function kill_intellij () {
+	ps -ef | grep -i intellij | awk 'NR > 1 { print prev } { prev = $2 }' | xargs kill -9
+}
