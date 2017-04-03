@@ -38,3 +38,7 @@ alias test-write-speed='dd if=/dev/zero of=testfile bs=1G count=1 oflag=direct'
 alias time-zsh='time zsh -i -c exit'
 
 eval "$(thefuck --alias)"
+
+# Git shortcuts
+alias gmd='git rebase origin/develop'
+alias gcfd='git diff --name-only develop --exit-code --no-renames'
