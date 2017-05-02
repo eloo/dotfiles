@@ -24,7 +24,7 @@ alias pg='ps aux | grep -i '
 alias finds='grep -rinw . -e $1'
 
 # Reload .zshrc
-alias reload-zshrc='source ~/.zshrc'
+alias reload-zshrc='source $HOME/.zshrc'
 
 # Some vagrant aliases
 alias vup='vagrant up'
@@ -37,8 +37,9 @@ alias test-write-speed='dd if=/dev/zero of=testfile bs=1G count=1 oflag=direct'
 # Check zsh loadtime
 alias time-zsh='time zsh -i -c exit'
 
-eval "$(thefuck --alias)"
-
 # Git shortcuts
-alias gmd='git rebase origin/develop'
+alias gmd='git merge origin/develop'
 alias gcfd='git diff --name-only develop --exit-code --no-renames'
+
+# Fetch http status code description
+alias httpstatuscode='curl -s http://www.ietf.org/assignments/http-status-codes/http-status-codes.txt | grep ' $1 ' | head -1'
