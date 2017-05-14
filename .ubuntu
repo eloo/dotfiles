@@ -16,6 +16,10 @@ alias ls='gls -AFh ${colorflag} --group-directories-first'
 # Ubuntu functions
 #
 
+function localip(){
+  echo "📶  "$(ip addr show | grep "inet\b" | awk '{print $2}' | cut -d/ -f1)
+}
+
 function apt-history(){
 
       case "$1" in

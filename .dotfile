@@ -11,12 +11,17 @@ if [ `git rev-list origin/master..HEAD | wc -l` -gt 0 ]; then
 fi
 )
 
+#export ZSH=$HOME/.antigen/bundles/robbyrussell/oh-my-zsh
 # Load 256 color
 export TERM="xterm-256color"
 
 # Load Antigen
 [ ! -f ~/dotfiles/antigen.zsh ] && wget 'https://raw.githubusercontent.com/zsh-users/antigen/master/bin/antigen.zsh' -O ~/dotfiles/antigen.zsh
-source ~/dotfiles/antigen.zsh
+source $HOME/dotfiles/antigen.zsh
+if ! type antigen > /dev/null; then
+	echo "antigen not found"
+	source $HOME/dotfiles/antigen.zsh
+fi
 
 # Load our dotfiles like ~/.antigen, etc…
 #   ~/dotfiles/.extra and ~/dotfiles/.local can be used for settings you don’t want to commit,
@@ -31,12 +36,12 @@ CURRENT_OS=`uname`
 
 # OS specific plugins
 if [[ $CURRENT_OS == 'Darwin' ]]; then
-    
+
     [ -f ~/dotfiles/.osx ] && source ~/dotfiles/.osx
 
 elif [[ $CURRENT_OS == 'Linux' ]]; then
 	DISTRO=`cat /etc/*-release`
-    
+
     # Load ubuntu specific stuff (and for debian as there isn't much atm)
     if [[ $DISTRO == *'Ubuntu'* || $DISTRO == *'Debian'* ]]; then
         [ -f ~/dotfiles/.ubuntu ] && source ~/dotfiles/.ubuntu
