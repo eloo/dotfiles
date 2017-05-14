@@ -228,7 +228,7 @@ function disk-restore(){
 	if hash pv 2>/dev/null; then
 		pipe=pv
 	fi
-	sudo gunzip -c $1 | $pipe | sudo dd of=$2
+	sudo gunzip -c $1 | $pipe | sudo dd of=$2 conv=sync,noerror bs=64K
 }
 
 function count_extensions () {
