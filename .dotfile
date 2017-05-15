@@ -16,6 +16,7 @@ fi
 export TERM="xterm-256color"
 
 # Load Antigen
+POWERLEVEL9K_MODE='awesome-patched'
 [ ! -f ~/dotfiles/antigen.zsh ] && wget 'https://raw.githubusercontent.com/zsh-users/antigen/master/bin/antigen.zsh' -O ~/dotfiles/antigen.zsh
 source $HOME/dotfiles/antigen.zsh
 if ! type antigen > /dev/null; then

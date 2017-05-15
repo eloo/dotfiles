@@ -8,11 +8,25 @@
 antigen use oh-my-zsh
 
 #
+# Antigen Bundles
+#
+
+antigen bundle git
+antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle rupa/z
+antigen bundle pip
+antigen bundle nobeans/zsh-sdkman
+antigen bundle zsh-users/zsh-completions
+antigen bundle extract
+antigen bundle sublime
+#antigen bundle vagrant
+
+#
 # Antigen theme
 #
 
 #export POWERLEVEL9K_INSTALLATION_PATH="$HOME/.antigen/bundles/bhilburn/powerlevel9k"
-POWERLEVEL9K_MODE='awesome-patched'
+#POWERLEVEL9K_MODE='awesome-patched'
 POWERLEVEL9K_OS_ICON_BACKGROUND="white"
 POWERLEVEL9K_OS_ICON_FOREGROUND="blue"
 POWERLEVEL9K_VCS_STAGED_ICON='\u00b1'
@@ -32,17 +46,3 @@ antigen theme bhilburn/powerlevel9k powerlevel9k
 antigen apply
 
 #antigen theme wesbos/Cobalt2-iterm cobalt2.zsh-theme
-
-#
-# Antigen Bundles
-#
-
-antigen bundle git
-antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle rupa/z
-antigen bundle pip
-antigen bundle nobeans/zsh-sdkman
-antigen bundle zsh-users/zsh-completions
-antigen bundle extract
-antigen bundle sublime
-#antigen bundle vagrant

@@ -1,3 +1,4 @@
 .local
 .extra
 antigen.zsh
+.antigen.zwc
