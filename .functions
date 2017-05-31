@@ -246,3 +246,15 @@ function count_extensions () {
 function kill_intellij () {
 	ps -ef | grep -i intellij | awk 'NR > 1 { print prev } { prev = $2 }' | xargs kill -9
 }
+
+function echo_server (){
+	if hash http-echo-server 2>/dev/null; then
+		if [ $# -eq 1 ]
+  then
+    export PORT=$1
+	fi
+		http-echo-server
+	else
+		echo "http-echo-server seems not be installed. You can install it using 'npm install http-echo-server -g'."
+	fi
+}
