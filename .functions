@@ -258,3 +258,8 @@ function echo_server (){
 		echo "http-echo-server seems not be installed. You can install it using 'npm install http-echo-server -g'."
 	fi
 }
+
+# Fetch http status code description
+function httpstatuscode(){
+	curl -s http://www.ietf.org/assignments/http-status-codes/http-status-codes.txt | grep "$1" | head -1
+}

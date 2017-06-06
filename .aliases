@@ -40,6 +40,3 @@ alias time-zsh='time zsh -i -c exit'
 # Git shortcuts
 alias gmd='git merge origin/develop'
 alias gcfd='git diff --name-only develop --exit-code --no-renames'
-
-# Fetch http status code description
-alias httpstatuscode="curl -s http://www.ietf.org/assignments/http-status-codes/http-status-codes.txt | grep ' $1 ' | head -1"
