@@ -199,6 +199,39 @@ function mkv_remove_audio(){
 	find -iname '*.mkv' -type f -exec ~/dotfiles/helpers/mkvmerge-remove-atracks.awk {} "$@" \;
 }
 
+# Apply distorion filter using ffmpeg
+function distorion_filter(){
+	SEARCH_STRING="*.*"
+	if [ -z "$1" ]
+	  	then
+	    	echo "Process all files"
+	    else
+			echo "Process all files with the extension '$1'"
+			SEARCH_STRING="*.$1"
+	fi
+	find . -type f -iname $SEARCH_STRING | while read LINE; do
+    	INPUT_FILE=$LINE
+    	echo "Processing file '$INPUT_FILE'"
+    	DIR=$(dirname "$INPUT_FILE")
+    	EXTENSION=${INPUT_FILE##*.}
+    	MIME_TYPE=`exiftool $INPUT_FILE | grep MIME | awk '{print $4}'`
+    	OUTPUT_ARGS=""
+		if [[ $MIME_TYPE =~ "image/*" ]]
+			then
+				echo "Handle image"
+		    	FILE_TYPE=`exiftool $INPUT_FILE | grep "File Type Extension" | awk '{print $5}'`
+		    	echo $FILE_TYPE
+				OUTPUT_ARGS="-vcodec $FILE_TYPE"
+		fi
+
+    	FILENAME="${INPUT_FILE%.*}"_distortion
+    	OUTPUT_FILE="$FILENAME."$EXTENSION
+    	ffmpeg -i $INPUT_FILE  -vf "lenscorrection=cx=0.5:cy=0.5:k1=-0.227:k2=-0.022" -crf 17 -q:v 0 -map_metadata 0 $OUTPUT_FILE < /dev/null
+    	touch -r $INPUT_FILE $OUTPUT_FILE
+	done
+	
+}
+
 function disk-backup(){
 	target_name=$2.$(date +%Y-%m-%d_%H-%M-%S).img.gz
 	echo "Create backup of $1 to $target_name"
