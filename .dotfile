@@ -41,10 +41,10 @@ if [[ $CURRENT_OS == 'Darwin' ]]; then
     [ -f ~/dotfiles/.osx ] && source ~/dotfiles/.osx
 
 elif [[ $CURRENT_OS == 'Linux' ]]; then
-	DISTRO=`cat /etc/*-release`
+	DISTRO=`cat /etc/*-release | grep ^ID`
 
     # Load ubuntu specific stuff (and for debian as there isn't much atm)
-    if [[ $DISTRO == *'Ubuntu'* || $DISTRO == *'Debian'* ]]; then
+    if [[ $DISTRO == *'debian'* ]]; then
         [ -f ~/dotfiles/.ubuntu ] && source ~/dotfiles/.ubuntu
     fi
 fi
