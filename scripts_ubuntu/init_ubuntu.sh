@@ -33,6 +33,12 @@ exit
 # IntelliJ IDEA
 sudo add-apt-repository ppa:mmk2410/intellij-idea-community
 
+# Golang PPA
+sudo add-apt-repository ppa:gophers/archive
+
+# Atom PPA
+sudo add-apt-repository ppa:webupd8team/atom
+
 # Sublime Text3
 sudo add-apt-repository ppa:webupd8team/sublime-text-3
 
