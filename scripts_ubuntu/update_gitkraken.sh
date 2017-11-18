@@ -8,13 +8,13 @@ FILE=${URL##*/}
 
 wget -c "$URL" -O "$FILE"
 
-if [[ ! -f "$FILE" ]]; then
+if [[! -f "$FILE" ]]; then
 	exit 1
 fi
 
 tar -xzf "$FILE" -C "/opt/"
 
-ln -sf "/opt/gitkraken/gitkraken" "/usr/bin/gitkraken"
+sudo ln -sf "/opt/gitkraken/gitkraken" "/usr/bin/gitkraken"
 
 # cp "$(dirname $0)/gitkraken.svg" "~/.local/share/icons/hicolor/scalable/apps/"
 gtk-update-icon-cache 
@@ -27,7 +27,7 @@ Type=Application
 Icon=gitkraken
 Exec=gitkraken
 Comment=The downright luxurious Git client
-Categories=Development;IDE;
+Categories=Development;IDE;		
 Keywords=Git;
 StartupNotify=true
 Terminal=false
