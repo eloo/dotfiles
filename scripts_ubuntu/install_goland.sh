@@ -44,7 +44,7 @@ func ()
 	  Comment=goland
 	  Exec=/usr/goland/bin/goland.sh
 	  Icon=/usr/goland/bin/goland.png
-	  Terminal=true
+	  Terminal=false
 	  Type=Application
 	  Encoding=UTF-8
 	  Categories=Utility"
