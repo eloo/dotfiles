@@ -40,3 +40,6 @@ alias time-zsh='time zsh -i -c exit'
 # Git shortcuts
 alias gmd='git merge origin/develop'
 alias gcfd='git diff --name-only develop --exit-code --no-renames'
+
+# Show my public IP
+alias pubIP='curl ifconfig.co'
