@@ -43,3 +43,6 @@ alias gcfd='git diff --name-only develop --exit-code --no-renames'
 
 # Show my public IP
 alias pubIP='curl ifconfig.co'
+
+# Added aliases using addAlias function
+alias tf=terraform
