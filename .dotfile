@@ -29,7 +29,7 @@ fi
 # Load our dotfiles like ~/.antigen, etc…
 #   ~/dotfiles/.extra and ~/dotfiles/.local can be used for settings you don’t want to commit,
 #   Use it to configure your PATH, thus it being first in line.
-for file in ~/dotfiles/.{antigen,extra,local,exports,aliases,functions}; do
+for file in ~/dotfiles/.{antigen,extra,exports,aliases,functions,local}; do
     [ -r "$file" ] && source "$file"
 done
 unset file
@@ -49,3 +49,5 @@ elif [[ $CURRENT_OS == 'Linux' ]]; then
         [ -f ~/dotfiles/.ubuntu ] && source ~/dotfiles/.ubuntu
     fi
 fi
+
+antigen apply
