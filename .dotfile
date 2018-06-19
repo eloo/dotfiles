@@ -11,6 +11,8 @@ if [ `git rev-list origin/master..HEAD | wc -l` -gt 0 ]; then
 fi
 )
 
+export EDITOR="/usr/bin/nano"
+
 #export ZSH=$HOME/.antigen/bundles/robbyrussell/oh-my-zsh
 # Load 256 color
 export TERM="xterm-256color"
