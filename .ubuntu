@@ -5,6 +5,7 @@
 #
 
 antigen bundle ubuntu
+source $HOME/.antigen/bundles/robbyrussell/oh-my-zsh/plugins/ubuntu/ubuntu.plugin.zsh
 
 #
 # Ubuntu specific aliases
@@ -46,7 +47,6 @@ function apt-install-history(){
 	comm -23 <(find /var/log/apt/ -name "history.*" -exec zsh -c "zgrep 'apt-get install' {}" \; | sed 's/.* //' | sort) <(find /var/log/apt/ -name "history.*" -exec zsh -c "zgrep 'apt-get remove' {}" \; | sed 's/.* //' | sort)
 }
 
-alias ll='ls -alh'
 
 antigen apply
-source $HOME/.antigen/bundles/robbyrussell/oh-my-zsh/plugins/ubuntu/ubuntu.plugin.zsh
+alias ll='ls -alh'
