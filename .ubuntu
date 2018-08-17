@@ -8,7 +8,7 @@ OS_ICON='\uE271'
 #
 
 antigen bundle ubuntu
-source $HOME/.antigen/bundles/robbyrussell/oh-my-zsh/plugins/ubuntu/ubuntu.plugin.zsh
+#source $HOME/.antigen/bundles/robbyrussell/oh-my-zsh/plugins/ubuntu/ubuntu.plugin.zsh
 
 #
 # Ubuntu specific aliases
