@@ -48,6 +48,9 @@ elif [[ $CURRENT_OS == 'Linux' ]]; then
     if [[ $DISTRO == *'ubuntu'* || $DISTRO == *'debian'* ]]; then
         [ -f ~/dotfiles/.ubuntu ] && source ~/dotfiles/.ubuntu
     fi
+    if [[ $DISTRO == *'debian'* ]]; then
+        [ -f ~/dotfiles/.debian ] && source ~/dotfiles/.debian
+    fi
 fi
 
 antigen apply
