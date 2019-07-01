@@ -50,6 +50,9 @@ function apt-install-history(){
 	comm -23 <(find /var/log/apt/ -name "history.*" -exec zsh -c "zgrep 'apt-get install' {}" \; | sed 's/.* //' | sort) <(find /var/log/apt/ -name "history.*" -exec zsh -c "zgrep 'apt-get remove' {}" \; | sed 's/.* //' | sort)
 }
 
+function 4ktofhd(){
+      ffmpeg -i $1 -vf scale=1920:1080 -c:v libx264 -crf 20 -preset slow fhd-$1
+}
 
 antigen apply
 alias ll='ls -alh'
