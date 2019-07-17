@@ -15,7 +15,7 @@ antigen bundle gem
 antigen bundle osx
 
 # Full brew update
-alias brew_update="brew -v update; brew upgrade --force-bottle; brew cleanup; brew cask cleanup; brew doctor"
+alias brew_update="brew -v update; brew upgrade --force-bottle; brew cleanup; brew doctor"
 
 #
 # OS X aliases
