@@ -17,6 +17,8 @@ antigen bundle osx
 # Full brew update
 alias brew_update="brew -v update; brew upgrade --force-bottle; brew cleanup; brew doctor"
 
+# Useful env variables
+
 #
 # OS X aliases
 #
