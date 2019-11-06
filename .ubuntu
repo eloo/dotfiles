@@ -61,5 +61,14 @@ function cleanSnaps(){
       done
 }
 
+gitkraken() {
+	if [ "$1" != "" ]
+    then
+		/usr/bin/gitkraken -p $1 1>/dev/null &
+	else
+		/usr/bin/gitkraken -p . 1>/dev/null &
+	fi
+}
+
 antigen apply
 alias ll='ls -alh'
