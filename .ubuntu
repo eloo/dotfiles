@@ -26,7 +26,6 @@ function localip(){
 }
 
 function apt-history(){
-
       case "$1" in
         install)
               grep 'install ' /var/log/dpkg.log
@@ -62,8 +61,8 @@ function cleanSnaps(){
 }
 
 gitkraken() {
-	if [ "$1" != "" ]
-    then
+      if [ "$1" != "" ]
+      then
 		/usr/bin/gitkraken -p $1 1>/dev/null &
 	else
 		/usr/bin/gitkraken -p . 1>/dev/null &

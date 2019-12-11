@@ -8,11 +8,6 @@ sudo apt-get update && sudo apt-get dist-upgrade -y
 sudo apt-get install git zsh software-properties-common	-y
 chsh -s /bin/zsh
 
-# Download, install and delete powerline fonts
-#git clone https://github.com/powerline/fonts.git
-#fonts/install.sh
-#rm -rf fonts
-
 # Download dotfiles
 git clone https://github.com/Eloo/dotfiles.git
 echo "source ~/dotfiles/.dotfile" > .zshrc
@@ -39,11 +34,13 @@ sudo add-apt-repository ppa:gophers/archive
 # Atom PPA
 sudo add-apt-repository ppa:webupd8team/atom
 
-# Sublime Text3
-wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
-echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
-
 # Oracle java installer
-sudo add-apt-repository ppa:webupd8team/java
+# sudo add-apt-repository ppa:webupd8team/java
+
+# Install jump 
+wget https://github.com/gsamokovarov/jump/releases/download/v0.23.0/jump_0.23.0_amd64.deb
+sudo dpkg -i jump_0.23.0_amd64.deb 
+rm jump_0.23.0_amd64.deb 
+
 
 sudo apt-get update

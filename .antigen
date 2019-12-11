@@ -13,13 +13,16 @@ antigen use oh-my-zsh
 
 antigen bundle git
 antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle agkozak/zsh-z
 antigen bundle pip
 antigen bundle nobeans/zsh-sdkman
 antigen bundle zsh-users/zsh-completions
 antigen bundle extract
-antigen bundle sublime
-#antigen bundle vagrant
+
+if ! type jump > /dev/null; then
+    antigen bundle agkozak/zsh-z
+else
+    eval "$(jump shell --bind=z)"
+fi
 
 #
 # Antigen theme
