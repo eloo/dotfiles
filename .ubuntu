@@ -16,6 +16,7 @@ antigen bundle ubuntu
 
 alias ls='gls -AFh ${colorflag} --group-directories-first'
 alias ports='sudo netstat -tulpen'
+alias code=codium
 
 #
 # Ubuntu functions
