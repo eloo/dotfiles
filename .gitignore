@@ -4,4 +4,4 @@ antigen.zsh
 .antigen.zwc
 .antigen.zwc
 antigen.zsh.zwc
-.ubuntu.zwc
+*.zwc
