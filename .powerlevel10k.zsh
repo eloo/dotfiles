@@ -4,6 +4,8 @@ typeset -g POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
 typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_THRESHOLD=2
 typeset -g POWERLEVEL9K_DIR_MAX_LENGTH=20
 typeset -g POWERLEVEL9K_TRANSIENT_PROMPT=false
+# typeset -g POWERLEVEL9K_SHORTEN_STRATEGY="truncate_left"
+
 
 
 
@@ -18,5 +20,4 @@ typeset -g POWERLEVEL9K_TRANSIENT_PROMPT=false
 # typeset -g POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND='cyan'
 # typeset -g POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(status os_icon context dir dir_writable vcs)
 # typeset -g POWERLEVEL9K_STATUS_VERBOSE=false
-# typeset -g #POWERLEVEL9K_SHORTEN_STRATEGY="truncate_left"
 # typeset -g POWERLEVEL9K_TIME_FORMAT="%D{%H:%M}"
