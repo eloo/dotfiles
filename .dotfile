@@ -1,7 +1,11 @@
+#!/bin/zsh
+
 #
 # This is the main dotfiles which will source all other dotfiles.
 # Only this file must be sourced in your ~/.zshrc
 #
+
+[[ ! -f ~/dotfiles/.p10k.zsh ]] || source ~/dotfiles/.p10k.zsh
 
 # Update dotfiles
 # Check return value to see if there are incoming updates.
@@ -32,7 +36,7 @@ fi
 # Load our dotfiles like ~/.antigen, etc…
 #   ~/dotfiles/.extra and ~/dotfiles/.local can be used for settings you don’t want to commit,
 #   Use it to configure your PATH, thus it being first in line.
-for file in ~/dotfiles/.{antigen,extra,exports,aliases,functions,local}; do
+for file in ~/dotfiles/.{antigen,powerlevel10k.zsh,extra,exports,aliases,functions,local}; do
     [ -r "$file" ] && source "$file"
 done
 unset file
