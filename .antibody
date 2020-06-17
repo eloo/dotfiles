@@ -21,6 +21,7 @@ antibody bundle robbyrussell/oh-my-zsh path:plugins/pip
 antibody bundle nobeans/zsh-sdkman
 antibody bundle zsh-users/zsh-completions
 antibody bundle robbyrussell/oh-my-zsh path:plugins/extract
+antibody bundle zsh-users/zsh-autosuggestions
 
 if ! type jump > /dev/null; then
     antibody bundle agkozak/zsh-z
