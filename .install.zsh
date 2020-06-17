@@ -1,7 +1,6 @@
 #!/bin/zsh
 
 function install_plugins(){
-    curl -sfL git.io/antibody | sh -s - -b /usr/local/bin
 
     # Get OS name
     CURRENT_OS=`uname`
@@ -20,9 +19,11 @@ function install_plugins(){
 }
 
 function install_macos(){
+    curl -sfL git.io/antibody | sh -s - -b /usr/local/bin
     brew install jump
 }
 
 function install_debian(){
+    curl -sfL git.io/antibody | sudo sh -s - -b /usr/local/bin
     wget https://github.com/gsamokovarov/jump/releases/download/v0.30.1/jump_0.30.1_amd64.deb && sudo dpkg -i jump_0.30.1_amd64.deb && rm jump_0.30.1_amd64.deb
 }
