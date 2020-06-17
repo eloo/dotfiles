@@ -11,38 +11,6 @@ function f() {
 	find . -name "$1" 2>&1 | grep -v 'Permission denied'
 }
 
-# List all files, long format, colorized, permissions in octal
-# function la(){
-#  	ls -l  "$@" | awk '
-#     {
-#       k=0;
-#       for (i=0;i<=8;i++)
-#         k+=((substr($1,i+2,1)~/[rwx]/) *2^(8-i));
-#       if (k)
-#         printf("%0o ",k);
-#       printf(" %9s  %3s %2s %5s  %6s  %s %s %s\n", $3, $6, $7, $8, $5, $9,$10, $11);
-#     }'
-#}
-
-# cd into whatever is the forefront Finder window.
-cdf() {  # short for cdfinder
-  cd "`osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)'`"
-}
-
-
-
-# git commit browser. needs fzf
-log() {
-  git log --graph --color=always \
-      --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
-  fzf --ansi --no-sort --reverse --tiebreak=index --toggle-sort=\` \
-      --bind "ctrl-m:execute:
-                echo '{}' | grep -o '[a-f0-9]\{7\}' | head -1 |
-                xargs -I % sh -c 'git show --color=always % | less -R'"
-}
-
-
-
 # Start an HTTP server from a directory, optionally specifying the port
 function server() {
 	local port="${1:-8000}"
@@ -54,19 +22,19 @@ function server() {
 
 function extract_filename(){
 	FILENAME="${1%.*}"
-	echo $FILENAME
+	echo "$FILENAME"
 }
 
 function tox264(){
 	FILENAME="${1%.*}"
-	avconv -i $1 -c:v libx264 -crf 19 -preset veryslow -c:a copy $FILENAME.mkv
-	chmod 644 $FILENAME.mkv
+	avconv -i "$1" -c:v libx264 -crf 19 -preset veryslow -c:a copy "$FILENAME.mkv"
+	chmod 644 "$FILENAME.mkv"
 }
 
 
 # Copy w/ progress
 cp_p () {
-  rsync -WavP --human-readable --progress $1 $2
+  rsync -WavP --human-readable --progress "$1" "$2"
 }
 
 
@@ -82,7 +50,7 @@ function gz() {
 # whois a domain or a URL
 function whois() {
 	local domain=$(echo "$1" | awk -F/ '{print $3}') # get domain from URL
-	if [ -z $domain ] ; then
+	if [ -z "$domain" ] ; then
 		domain=$1
 	fi
 	echo "Getting whois record for: $domain …"
@@ -90,7 +58,7 @@ function whois() {
 	# avoid recursion
 					# this is the best whois server
 													# strip extra fluff
-	/usr/bin/whois -h whois.internic.net $domain | sed '/NOTICE:/q'
+	/usr/bin/whois -h whois.internic.net "$domain" | sed '/NOTICE:/q'
 }
 
 # preview csv files. source: http://stackoverflow.com/questions/1875305/command-line-csv-viewer
@@ -159,34 +127,15 @@ gifify() {
   fi
 }
 
-# turn that video into webm.
-# brew reinstall ffmpeg --with-libvpx
-webmify(){
-	ffmpeg -i "$1" -vcodec libvpx -acodec libvorbis -isync -copyts -aq 80 -threads 3 -qmax 30 -y "$2" "$1.webm"
-}
-
 # direct it all to /dev/null
 function nullify() {
   "$@" >/dev/null 2>&1
 }
 
-# create directory and enter it
-function mkcd () {
-    mkdir -p "$*"
-    cd "$*"
-}
-
-# Override antigen-selfupdate
-function antigen-selfupdate(){
-	wget 'https://raw.githubusercontent.com/zsh-users/antigen/develop/bin/antigen.zsh' -O ~/dotfiles/antigen.zsh.tmp
-	mv ~/dotfiles/antigen.zsh.tmp ~/dotfiles/antigen.zsh
-	source ~/dotfiles/antigen.zsh
-}
-
 # Removes audio tracks from mkv files
 # see https://www.reddit.com/r/usenet/comments/2ofcv5/remove_unwanted_audiosubtitles_from_mkv/
 function mkv_remove_audio(){
-	find -iname '*.mkv' -type f -exec ~/dotfiles/helpers/mkvmerge-remove-atracks.awk {} "$@" \;
+	find . -iname '*.mkv' -type f -exec ~/dotfiles/helpers/mkvmerge-remove-atracks.awk {} "$@" \;
 }
 
 # Apply distorion filter using ffmpeg
@@ -262,7 +211,7 @@ function speed_test_1gb(){
 }
 
 function count_extensions () {
-	find $1 -type f | grep -E ".*\.[a-zA-Z0-9]*$" | sed -e 's/.*\(\.[a-zA-Z0-9]*\)$/\1/' | sort | uniq -c | sort -nr
+	find "$1" -type f | grep -E ".*\.[a-zA-Z0-9]*$" | sed -e 's/.*\(\.[a-zA-Z0-9]*\)$/\1/' | sort | uniq -c | sort -nr
 }
 
 # Kill intellij prozesses
@@ -292,9 +241,9 @@ function doWhile() {
 }
 
 function tryWhile() {
-    until eval $1
+    until eval "$1"
     do
-      sleep $2
+      sleep "$2"
     done
 }
 
@@ -310,7 +259,7 @@ function encryptString() {
 	echo "$1" | openssl enc -aes-256-cbc -a
 }
 
-decode_base64_url() {
+function decode_base64_url() {
   local len=$((${#1} % 4))
   local result="$1"
   if [ $len -eq 2 ]; then result="$1"'=='
@@ -319,9 +268,9 @@ decode_base64_url() {
   echo "$result" | tr '_-' '/+' | base64 --decode
 }
 
-decode_jwt(){
-   decode_base64_url $(echo -n $1 | cut -d "." -f 1) | jq .
-   decode_base64_url $(echo -n $1 | cut -d "." -f 2) | jq .
+function decode_jwt(){
+   decode_base64_url "$(echo -n "$1" | cut -d "." -f 1)" | jq .
+   decode_base64_url "$(echo -n "$1" | cut -d "." -f 2)" | jq .
 }
 
 # Decode JWT

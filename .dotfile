@@ -1,5 +1,7 @@
 #!/bin/zsh
 
+source <(antibody init)
+
 #
 # This is the main dotfiles which will source all other dotfiles.
 # Only this file must be sourced in your ~/.zshrc
@@ -17,25 +19,16 @@ fi
 
 export EDITOR="/usr/bin/nano"
 
-#export ZSH=$HOME/.antigen/bundles/robbyrussell/oh-my-zsh
 # Load 256 color
 export TERM="xterm-256color"
 
 # Do fully highlight directories
 export LS_COLORS="ow=1;34:tw=1;34:"
 
-# Load Antigen
-[ ! -f ~/dotfiles/antigen.zsh ] && wget 'https://raw.githubusercontent.com/zsh-users/antigen/master/bin/antigen.zsh' -O ~/dotfiles/antigen.zsh
-source $HOME/dotfiles/antigen.zsh
-if ! type antigen > /dev/null; then
-	echo "antigen not found"
-	source $HOME/dotfiles/antigen.zsh
-fi
-
-# Load our dotfiles like ~/.antigen, etc…
+# Load our dotfiles like ~/.antibody, etc…
 #   ~/dotfiles/.extra and ~/dotfiles/.local can be used for settings you don’t want to commit,
 #   Use it to configure your PATH, thus it being first in line.
-for file in ~/dotfiles/.{antigen,powerlevel10k.zsh,extra,exports,aliases,functions,local}; do
+for file in ~/dotfiles/.{antibody,powerlevel10k.zsh,extra,exports,aliases,functions,local}; do
     [ -r "$file" ] && source "$file"
 done
 unset file
@@ -58,5 +51,3 @@ elif [[ $CURRENT_OS == 'Linux' ]]; then
         [ -f ~/dotfiles/.debian ] && source ~/dotfiles/.debian
     fi
 fi
-
-antigen apply

@@ -4,11 +4,10 @@
 OS_ICON='\uE271'
 
 #
-# Antigen bundles
+# Antibody bundles
 #
 
-antigen bundle ubuntu
-#source $HOME/.antigen/bundles/robbyrussell/oh-my-zsh/plugins/ubuntu/ubuntu.plugin.zsh
+antibody bundle robbyrussell/oh-my-zsh path:plugins/ubuntu
 
 #
 # Ubuntu specific aliases
@@ -74,5 +73,4 @@ gitkraken() {
 	fi
 }
 
-antigen apply
 alias ll='ls -alh'

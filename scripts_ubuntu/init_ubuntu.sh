@@ -16,9 +16,6 @@ chmod u+x ~/dotfiles/helpers/install_awesomefonts.sh
 
 # Let zsh init itself and update
 zsh
-antigen-selfupdate
-antigen-update
-antigen
 exit
 
 #
@@ -31,16 +28,9 @@ sudo add-apt-repository ppa:mmk2410/intellij-idea-community
 # Golang PPA
 sudo add-apt-repository ppa:gophers/archive
 
-# Atom PPA
-sudo add-apt-repository ppa:webupd8team/atom
-
 # Oracle java installer
 # sudo add-apt-repository ppa:webupd8team/java
 
 # Install jump 
-wget https://github.com/gsamokovarov/jump/releases/download/v0.23.0/jump_0.23.0_amd64.deb
-sudo dpkg -i jump_0.23.0_amd64.deb 
-rm jump_0.23.0_amd64.deb 
-
 
 sudo apt-get update

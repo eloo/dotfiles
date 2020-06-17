@@ -1,4 +1,4 @@
-# OS X Antigen configuration
+# OS X Antibody configuration
 
 #
 # Exports
@@ -7,12 +7,10 @@ export JAVA_HOME=$(/usr/libexec/java_home)
 
 
 #
-# Antigen bundles
+# Antibody bundles
 #
 
-antigen bundle brew
-antigen bundle gem
-antigen bundle osx
+antibody bundle robbyrussell/oh-my-zsh path:plugins/brew
 
 # Full brew update
 alias brew_update="brew -v update; brew upgrade --force-bottle; brew cleanup; brew doctor"

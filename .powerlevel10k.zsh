@@ -1,10 +1,12 @@
 # Additional powerlevel10k configuration
+typeset -g -a POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=( os_icon dir vcs )
 typeset -g POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(command_execution_time time)
 typeset -g POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
 typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_THRESHOLD=2
 typeset -g POWERLEVEL9K_DIR_MAX_LENGTH=20
 typeset -g POWERLEVEL9K_TRANSIENT_PROMPT=false
-# typeset -g POWERLEVEL9K_MODE='awesome-patched'
+typeset -g POWERLEVEL9K_MODE='awesome-patched'
+# typeset -g POWERLEVEL9K_MODE=nerdfont-complete
 # typeset -g POWERLEVEL9K_VCS_BRANCH_ICON=""
 
 # typeset -g POWERLEVEL9K_SHORTEN_STRATEGY="truncate_left"
