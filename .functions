@@ -31,13 +31,10 @@ function tox264(){
 	chmod 644 "$FILENAME.mkv"
 }
 
-
 # Copy w/ progress
 cp_p () {
   rsync -WavP --human-readable --progress "$1" "$2"
 }
-
-
 
 # get gzipped size
 function gz() {
@@ -59,11 +56,6 @@ function whois() {
 					# this is the best whois server
 													# strip extra fluff
 	/usr/bin/whois -h whois.internic.net "$domain" | sed '/NOTICE:/q'
-}
-
-# preview csv files. source: http://stackoverflow.com/questions/1875305/command-line-csv-viewer
-function csvpreview(){
-      sed 's/,,/, ,/g;s/,,/, ,/g' "$@" | column -s, -t | less -#2 -N -S
 }
 
 # Extract archives - use: extract <file>
@@ -108,23 +100,6 @@ camerausedby() {
 	echo "Checking to see who is using the iSight camera… 📷"
 	usedby=$(lsof | grep -w "AppleCamera\|USBVDC\|iSight" | awk '{printf $2"\n"}' | xargs ps)
 	echo -e "Recent camera uses:\n$usedby"
-}
-
-
-# animated gifs from any video
-# from alex sexton   gist.github.com/SlexAxton/4989674
-gifify() {
-  if [[ -n "$1" ]]; then
-	if [[ $2 == '--good' ]]; then
-	  ffmpeg -i "$1" -r 10 -vcodec png out-static-%05d.png
-	  time convert -verbose +dither -layers Optimize -resize 900x900\> out-static*.png  GIF:- | gifsicle --colors 128 --delay=5 --loop --optimize=3 --multifile - > "$1.gif"
-	  rm out-static*.png
-	else
-	  ffmpeg -i "$1" -s 600x400 -pix_fmt rgb24 -r 10 -f gif - | gifsicle --optimize=3 --delay=3 > "$1.gif"
-	fi
-  else
-	echo "proper usage: gifify <input_movie.mov>. You DO need to include extension."
-  fi
 }
 
 # direct it all to /dev/null
@@ -178,7 +153,7 @@ function disk-backup(){
 	if hash pv 2>/dev/null; then
 		pipe=pv
 	fi
-	sudo dd if=$1 conv=sync,noerror bs=64K | $pipe | gzip -c  > $target_name
+	sudo dd if=$1 conv=sync,noerror bs=1M | $pipe | gzip -c  > $target_name
 	echo "Backup created at $target_name"
 }
 
@@ -188,7 +163,7 @@ function disk-restore(){
 	if hash pv 2>/dev/null; then
 		pipe=pv
 	fi
-	sudo gunzip -c $1 | $pipe | sudo dd of=$2 conv=sync,noerror bs=64K
+	sudo gunzip -c $1 | $pipe | sudo dd of=$2 conv=sync,noerror bs=1M
 }
 
 function speed_test_1gb(){
