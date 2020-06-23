@@ -4,7 +4,7 @@ tmp_dir="tmp_fonts"
 mkdir -p "$tmp_dir"
 cd "$tmp_dir"
 
-if [[ `uname` == 'Darwin' ]]; then
+if [ "$(uname)" = 'Darwin' ]; then
   # MacOS
   font_dir="$HOME/Library/Fonts"
 else
@@ -12,7 +12,7 @@ else
   font_dir="$HOME/.local/share/fonts"
   mkdir -p "$font_dir"
 fi 
-wget https://github.com/gabrielelana/awesome-terminal-fonts/raw/patching-strategy/patched/SourceCodePro%2BPowerline%2BAwesome%2BRegular.ttf
+wget https://github.com/Falkor/dotfiles/raw/master/fonts/SourceCodePro%2BPowerline%2BAwesome%2BRegular.ttf
 wget https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf
 wget https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold.ttf
 wget https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Italic.ttf
