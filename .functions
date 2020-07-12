@@ -166,21 +166,21 @@ function disk-restore(){
 	sudo gunzip -c $1 | $pipe | sudo dd of=$2 conv=sync,noerror bs=1M
 }
 
-function speed_test_2gb(){
+function speed_test_1gb(){
 	pipe="cat"
 	dd_status="status=progress"
 	if hash pv 2>/dev/null; then
-		pipe=(pv -s 2g)
+		pipe=(pv -s 1g)
 		dd_status="status=none"
 	fi
 	echo "Test write speed"
-	dd if=/dev/zero bs=16k count=128k conv=notrunc status=none | $pipe | dd of=tempfile conv=fdatasync $dd_status
+	dd if=/dev/zero bs=1M count=1024 conv=notrunc status=none | $pipe | dd of=tempfile conv=fdatasync $dd_status
 	echo "Drop caches"
 	echo 3 | sudo tee /proc/sys/vm/drop_caches > /dev/null
 	echo "Test read speed uncached"
-	dd if=tempfile  bs=16k count=128k $dd_status | $pipe | dd of=/dev/null status=none
+	dd if=tempfile bs=1M count=1024 $dd_status | $pipe | dd of=/dev/null status=none
 	echo "Test read speed cached"
-	dd if=tempfile bs=16k count=128k $dd_status | $pipe | dd of=/dev/null status=none
+	dd if=tempfile bs=1M count=1024 $dd_status | $pipe | dd of=/dev/null status=none
 	echo "Delete tmp file"
 	rm tempfile
 }
