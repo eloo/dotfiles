@@ -25,7 +25,7 @@ function install_macos(){
 
 function install_debian(){
     arch=$(dpkg --print-architecture)
-    if [[ $arch == "amd64"]]; then 
+    if [[ $arch == 'amd64' ]]; then 
         curl -sfL git.io/antibody | sudo sh -s - -b /usr/local/bin
         wget https://github.com/gsamokovarov/jump/releases/download/v0.30.1/jump_0.30.1_amd64.deb && sudo dpkg -i jump_0.30.1_amd64.deb && rm jump_0.30.1_amd64.deb
     fi
