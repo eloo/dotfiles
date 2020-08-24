@@ -221,11 +221,11 @@ function addAlias() {
 }
 
 function decryptString() {
-	echo "$1" | openssl enc -aes-256-cbc -d -a
+	echo "$1" | openssl enc -aes-256-cbc -d -a -md sha256
 }
 
 function encryptString() {
-	echo "$1" | openssl enc -aes-256-cbc -a
+	echo "$1" | openssl enc -aes-256-cbc -a -md sha256
 }
 
 function decode_base64_url() {
