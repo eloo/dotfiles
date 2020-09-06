@@ -251,5 +251,9 @@ function decode_jwt(){
    decode_base64_url "$(echo -n "$1" | cut -d "." -f 2)" | jq .
 }
 
+function publicip() {
+	curl ifconfig.me
+}
+
 # Decode JWT
 alias jwt="decode_jwt"
