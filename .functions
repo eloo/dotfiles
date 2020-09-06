@@ -228,6 +228,15 @@ function encryptString() {
 	echo "$1" | openssl enc -aes-256-cbc -a
 }
 
+function removeXAttr() {
+	xattr ${1} | xargs -I{} zsh -c "xattr -d {} ${1}"
+}
+
+function showXAttr() {
+        xattr ${1} | xargs -I{} zsh -c "xattr -p {} ${1}"
+}
+
+
 function decode_base64_url() {
   local len=$((${#1} % 4))
   local result="$1"
