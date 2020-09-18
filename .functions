@@ -259,6 +259,6 @@ function publicip() {
 alias jwt="decode_jwt"
 
 function generateRSAKeyPair(){
-	openssl genrsa -out privateKey.pem 2048
+	openssl genrsa -out privateKey.pem 4096
 	openssl rsa -in privateKey.pem -outform PEM -pubout -out publicKey.pem
 }
