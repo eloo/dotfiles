@@ -51,3 +51,5 @@ elif [[ $CURRENT_OS == 'Linux' ]]; then
         [ -f ~/dotfiles/.debian ] && source ~/dotfiles/.debian
     fi
 fi
+
+export PATH=~/.local/bin:$PATH
