@@ -221,12 +221,21 @@ function addAlias() {
 }
 
 function decryptString() {
-	echo "$1" | openssl enc -aes-256-cbc -d -a
+	echo "$1" | openssl enc -aes-256-cbc -d -a -md sha256
 }
 
 function encryptString() {
-	echo "$1" | openssl enc -aes-256-cbc -a
+	echo "$1" | openssl enc -aes-256-cbc -a -md sha256
 }
+
+function removeXAttr() {
+	xattr "$1" | xargs -I{} zsh -c "xattr -d {} $1"
+}
+
+function showXAttr() {
+    xattr "$1" | xargs -I{} zsh -c "xattr -p {} $1"
+}
+
 
 function decode_base64_url() {
   local len=$((${#1} % 4))
@@ -242,5 +251,14 @@ function decode_jwt(){
    decode_base64_url "$(echo -n "$1" | cut -d "." -f 2)" | jq .
 }
 
+function publicip() {
+	curl ifconfig.me
+}
+
 # Decode JWT
 alias jwt="decode_jwt"
+
+function generateRSAKeyPair(){
+	openssl genrsa -out privateKey.pem 4096
+	openssl rsa -in privateKey.pem -outform PEM -pubout -out publicKey.pem
+}
