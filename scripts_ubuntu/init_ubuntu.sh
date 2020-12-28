@@ -14,8 +14,8 @@ curl -sfL git.io/antibody | sudo sh -s - -b /usr/local/bin
 # Download dotfiles
 git clone https://github.com/Eloo/dotfiles.git
 echo "source ~/dotfiles/.dotfile" > .zshrc
-chmod u+x ~/dotfiles/helpers/install_awesomefonts.sh
-~/dotfiles/helpers/install_awesomefonts.sh
+chmod u+x ~/dotfiles/helpers/install_fonts.sh
+~/dotfiles/helpers/install_fonts.sh
 
 # Let zsh init itself and update
 zsh
