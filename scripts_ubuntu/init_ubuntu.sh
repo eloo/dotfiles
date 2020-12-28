@@ -6,7 +6,7 @@ sudo apt-get update && sudo apt-get dist-upgrade -y
 
 # Install some basic tools
 sudo apt-get install git zsh software-properties-common	-y
-chsh -s /bin/zs
+chsh -s /bin/zsh
 
 # Install antibody
 curl -sfL git.io/antibody | sudo sh -s - -b /usr/local/bin
