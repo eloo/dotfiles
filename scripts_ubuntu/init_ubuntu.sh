@@ -6,7 +6,10 @@ sudo apt-get update && sudo apt-get dist-upgrade -y
 
 # Install some basic tools
 sudo apt-get install git zsh software-properties-common	-y
-chsh -s /bin/zsh
+chsh -s /bin/zs
+
+# Install antibody
+curl -sfL git.io/antibody | sudo sh -s - -b /usr/local/bin
 
 # Download dotfiles
 git clone https://github.com/Eloo/dotfiles.git
