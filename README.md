@@ -8,3 +8,7 @@ Please do some research if you have any concerns about features included in this
 | OS | Snippet |
 |:---:|:---|
 | Ubuntu | `bash -c "$(wget -qO - https://raw.githubusercontent.com/Eloo/dotfiles/master/scripts_ubuntu/init_ubuntu.sh)"` |
+
+
+## Configuration
+* Set `DEFAULT_USER` in `.local` to your local username

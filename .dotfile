@@ -50,6 +50,9 @@ elif [[ $CURRENT_OS == 'Linux' ]]; then
     if [[ $DISTRO == *'debian'* ]]; then
         [ -f ~/dotfiles/.debian ] && source ~/dotfiles/.debian
     fi
+    if [[ $DISTRO == *'manjaro'* ]]; then
+        [ -f ~/dotfiles/.manjaro ] && source ~/dotfiles/.manjaro
+    fi
 fi
 
 export PATH=~/.local/bin:$PATH

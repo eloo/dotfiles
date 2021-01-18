@@ -1,0 +1,5 @@
+#
+# Manjaro specific config 
+#
+
+antibody bundle robbyrussell/oh-my-zsh path:plugins/archlinux
