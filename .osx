@@ -37,7 +37,8 @@ ports (){
 
 # Kills the process behind the passed port number
 function killp(){
- netstat -Watnlv | grep LISTEN | awk '{"ps -o comm= -p " $9 | getline procname; print "addr.port: " $4 " | pid: " $9 " " ;  }' | grep $1 | awk '{print $5}' | xargs kill -9
+  kill $(lsof -nP -i:$1 | grep LISTEN | awk -F ' ' '{print $2}') || true
+# netstat -Watnlv | grep LISTEN | awk '{"ps -o comm= -p " $9 | getline procname; print "addr.port: " $4 " | pid: " $9 " " ;  }' | grep $1 | awk '{print $5}' | xargs kill -9
 }
 
 # Update all casks
