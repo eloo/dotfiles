@@ -7,7 +7,7 @@ Please do some research if you have any concerns about features included in this
 ## Setup
 | OS | Snippet |
 |:---:|:---|
-| Ubuntu | `bash -c "$(wget -qO - https://raw.githubusercontent.com/Eloo/dotfiles/master/scripts_ubuntu/init_ubuntu.sh)"` |
+| Ubuntu | `bash -c "$(wget -qO - https://raw.githubusercontent.com/eloo/dotfiles/master/scripts_ubuntu/init_ubuntu.sh)"` |
 
 
 ## Configuration
