@@ -262,3 +262,19 @@ function generateRSAKeyPair(){
 	openssl genrsa -out privateKey.pem 4096
 	openssl rsa -in privateKey.pem -outform PEM -pubout -out publicKey.pem
 }
+
+function tar-backup(){
+	if [ "$#" -ne 2 ]; then
+    	echo "Usage: tar-backup <output.tar.gz> <source-dir>"
+		return 1
+	fi
+	tar -cvpzf "$1" "$2"
+}
+
+function tar-backup-extract(){
+	if [ "$#" -ne 2 ]; then
+    	echo "Usage: tar-backup-extract <backup.tar.gz> <output-dir>"
+		return 1
+	fi
+	tar -xvpzf "$1" -C "$2" --numeric-owner
+}
