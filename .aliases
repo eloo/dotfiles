@@ -46,3 +46,9 @@ alias pubIP='curl ifconfig.co'
 
 # Added aliases using addAlias function
 alias tf=terraform
+
+# Alias for codium
+if command -v codium &> /dev/null
+then
+    alias code=codium
+fi
