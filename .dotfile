@@ -55,4 +55,4 @@ elif [[ $CURRENT_OS == 'Linux' ]]; then
     fi
 fi
 
-export PATH=~/.local/bin:$PATH
+export PATH=~/.local/bin:~/.yarn/bin:$PATH

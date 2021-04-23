@@ -12,3 +12,6 @@ Please do some research if you have any concerns about features included in this
 
 ## Configuration
 * Set `DEFAULT_USER` in `.local` to your local username
+
+### VSCodium
+* Set the font like this `"terminal.integrated.fontFamily": "'SourceCodePro+Powerline+Awesome Regular'"`
