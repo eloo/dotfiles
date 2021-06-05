@@ -278,3 +278,12 @@ function tar-backup-extract(){
 	fi
 	tar -xvpzf "$1" -C "$2" --numeric-owner
 }
+
+function clear-caches(){
+	yay -Sc --aur
+	go clean -modcache
+	sdk flush
+	npm cache clear --force
+	yarn cache clean
+	sudo docker system prune -a
+}
