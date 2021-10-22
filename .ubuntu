@@ -60,22 +60,6 @@ function cleanSnaps(){
       done
 }
 
-function renameMediaFilesToCreateDate(){
-      exiftool -r '-FileName<CreateDate' -d %Y-%m-%d_%H-%M-%S%%-c.%%e * $1
-}
-
-function renameMediaFilesToDateTimeOriginal(){
-      exiftool -r '-FileName<DateTimeOriginal' -d %Y-%m-%d_%H-%M-%S%%-c.%%e * $1
-}
-
-function renameMediaFilesToCreateDateWithFolders(){
-      exiftool -r '-FileName<CreateDate' -d %Y/%m/%Y-%m-%d_%H-%M-%S%%-c.%%e * $1
-}
-
-function renameMediaFilesToDateTimeOriginalWithFolders(){
-      exiftool -r '-FileName<DateTimeOriginal' -d %Y/%m/%Y-%m-%d_%H-%M-%S%%-c.%%e * $1
-}
-
 gitkraken() {
       if [ "$1" != "" ]
       then
