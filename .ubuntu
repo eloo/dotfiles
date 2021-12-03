@@ -68,5 +68,3 @@ gitkraken() {
 		/usr/bin/gitkraken -p . 1>/dev/null &
 	fi
 }
-
-alias ll='ls -alh'

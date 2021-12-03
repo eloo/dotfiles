@@ -1,3 +1,8 @@
+# Aliases
+alias ll='ls -alh'
+
+# Functions
+
 function renameMediaFilesToCreateDate(){
       exiftool -r '-FileName<CreateDate' -d %Y-%m-%d_%H-%M-%S%%-c.%%e * $1
 }
