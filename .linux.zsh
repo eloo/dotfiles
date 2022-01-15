@@ -18,3 +18,9 @@ function renameMediaFilesToCreateDateWithFolders(){
 function renameMediaFilesToDateTimeOriginalWithFolders(){
       exiftool -r '-FileName<DateTimeOriginal' -d %Y/%m/%Y-%m-%d_%H-%M-%S%%-c.%%e * $1
 }
+
+function ocr-pdf(){
+      extension=${1##*.}
+      filename="${1%.*}"
+      ocrmypdf -l deu --jbig2-lossy --optimize 3 "$1" "${filename}-ocr.${extension}"
+}
