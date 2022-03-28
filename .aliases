@@ -58,3 +58,9 @@ if command -v kubectl &> /dev/null
 then
     alias kgsecd='kubectl get secret -o go-template='"'"'{{range $k,$v := .data}}{{printf "%s: " $k}}{{if not $v}}{{$v}}{{else}}{{$v | base64decode}}{{end}}{{"\n"}}{{end}}'"'"''
 fi
+
+# Aliases for k3d     
+if command -v k3d &> /dev/null
+then
+    alias k3dsa='k3d cluster stop --all'
+fi
