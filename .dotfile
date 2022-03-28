@@ -43,7 +43,7 @@ if [[ $CURRENT_OS == 'Darwin' ]]; then
 
 elif [[ $CURRENT_OS == 'Linux' ]]; then
 
-    [ -f ~/dotfiles/.linux ] && source ~/dotfiles/.linux
+    [ -f ~/dotfiles/.linux.zsh ] && source ~/dotfiles/.linux.zsh
 
 
 	DISTRO=`cat /etc/*-release | grep ^ID=`

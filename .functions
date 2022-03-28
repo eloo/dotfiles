@@ -268,7 +268,7 @@ function tar-backup(){
     	echo "Usage: tar-backup <output.tar.gz> <source-dir>"
 		return 1
 	fi
-	tar -cvpzf "$1" "$2"
+	sudo tar -cvpzf "$1" "$2"
 }
 
 function tar-backup-extract(){

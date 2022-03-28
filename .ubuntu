@@ -13,7 +13,6 @@ antibody bundle robbyrussell/oh-my-zsh path:plugins/ubuntu
 # Ubuntu specific aliases
 #
 
-alias ls='gls -AFh ${colorflag} --group-directories-first'
 alias ports='sudo netstat -tulpen'
 alias code=codium
 
@@ -68,5 +67,3 @@ gitkraken() {
 		/usr/bin/gitkraken -p . 1>/dev/null &
 	fi
 }
-
-alias ll='ls -alh'
