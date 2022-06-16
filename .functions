@@ -107,12 +107,6 @@ function nullify() {
   "$@" >/dev/null 2>&1
 }
 
-# Removes audio tracks from mkv files
-# see https://www.reddit.com/r/usenet/comments/2ofcv5/remove_unwanted_audiosubtitles_from_mkv/
-function mkv_remove_audio(){
-	find . -iname '*.mkv' -type f -exec ~/dotfiles/helpers/mkvmerge-remove-atracks.awk {} "$@" \;
-}
-
 # Apply distorion filter using ffmpeg
 function distorion_filter(){
 	SEARCH_STRING="*.*"

@@ -14,7 +14,6 @@ antibody bundle robbyrussell/oh-my-zsh path:plugins/ubuntu
 #
 
 alias ports='sudo netstat -tulpen'
-alias code=codium
 
 #
 # Ubuntu functions
@@ -57,13 +56,4 @@ function cleanSnaps(){
       while read snapname revision; do
           sudo snap remove "$snapname" --revision="$revision"
       done
-}
-
-gitkraken() {
-      if [ "$1" != "" ]
-      then
-		/usr/bin/gitkraken -p $1 1>/dev/null &
-	else
-		/usr/bin/gitkraken -p . 1>/dev/null &
-	fi
 }
