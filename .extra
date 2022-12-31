@@ -1,4 +1,4 @@
 # Add history ignore pattern
 HISTORY_IGNORE="(encryptString|*htpasswd) *"
 
-alias dupdate="docker compose up --pull always -d"
+alias dupdate="docker compose pull && docker compose up -d"
