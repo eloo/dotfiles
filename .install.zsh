@@ -16,6 +16,8 @@ function install_plugins(){
         fi
     fi
 
+    git clone --depth=1 https://github.com/mattmc3/antidote.git ${ZDOTDIR:-~}/.antidote
+
     pip3 install install-release
     install-release config --path ~/.local/bin
     install-release get https://github.com/gsamokovarov/jump -y

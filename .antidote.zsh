@@ -29,16 +29,6 @@ source $zsh_plugins
 #
 DISABLE_UPDATE_PROMPT=true
 DISABLE_AUTO_UPDATE=true
-#antidote bundle robbyrussell/oh-my-zsh
-
-#antidote bundle robbyrussell/oh-my-zsh path:plugins/aws
-#antidote bundle robbyrussell/oh-my-zsh path:plugins/git
-#antidote bundle zsh-users/zsh-syntax-highlighting
-#antidote bundle robbyrussell/oh-my-zsh path:plugins/pip
-#antidote bundle nobeans/zsh-sdkman
-#antidote bundle zsh-users/zsh-completions
-#antidote bundle robbyrussell/oh-my-zsh path:plugins/extract
-#antidote bundle zsh-users/zsh-autosuggestions
 
 if ! type jump > /dev/null; then
     antidote bundle agkozak/zsh-z

@@ -69,3 +69,4 @@ elif [[ $CURRENT_OS == 'Linux' ]]; then
     fi
 fi
 
+autoload -Uz compinit && compinit
