@@ -11,7 +11,7 @@ export PATH=${HOME}/.kubectl-plugins:$PATH
 # Antibody bundles
 #
 
-antidote bundle ohmyzsh/ohmyzsh path:plugins/brew >~/.zsh_plugins.zsh
+antidote bundle ohmyzsh/ohmyzsh path:plugins/brew >>~/.zsh_plugins.zsh
 
 # Full brew update
 alias brew_update="brew -v update; brew upgrade --force-bottle; brew cleanup; brew doctor"

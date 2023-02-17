@@ -3,6 +3,7 @@
 # ENVS
 export EGET_BIN=~/.local/bin
 export PATH=~/.local/bin:~/.yarn/bin:$PATH
+export ZSH_CACHE_DIR=~/.oh-my-zsh/cache
 
 #source <(antibody init)
 
@@ -18,14 +19,6 @@ antidote load
 #
 
 [[ ! -f ~/dotfiles/.p10k.zsh ]] || source ~/dotfiles/.p10k.zsh
-
-# Update dotfiles
-# Check return value to see if there are incoming updates.
-(cd ~/dotfiles;
-if [ `git rev-list origin/master..HEAD | wc -l` -gt 0 ]; then
-	git pull
-fi
-)
 
 export EDITOR="/usr/bin/nano"
 
