@@ -3,7 +3,6 @@
 # ENVS
 export EGET_BIN=~/.local/bin
 export PATH=~/.local/bin:~/.yarn/bin:$PATH
-export ZSH_CACHE_DIR=~/.oh-my-zsh/cache
 
 #source <(antibody init)
 

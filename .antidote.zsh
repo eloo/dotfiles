@@ -6,9 +6,6 @@
 # Load various lib files
 #
 
-export ZSH="$(antidote home)/https-COLON--SLASH--SLASH-github.com-SLASH-ohmyzsh-SLASH-ohmyzsh"
-source $ZSH/oh-my-zsh.sh
-
 # Set the name of the static .zsh plugins file antidote will generate.
 zsh_plugins=${ZDOTDIR:-~}/.zsh_plugins.zsh
 

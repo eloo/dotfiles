@@ -25,6 +25,17 @@ function install_plugins(){
     curl https://zyedidia.github.io/eget.sh | sh
     mv eget ~/.local/bin
     eget gsamokovarov/jump
+
+
+    ZSH= sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+    if grep -Fxq "source ~/dotfiles/.dotfile" ~/.zshrc
+    then
+        # code if found
+    else
+       echo "source ~/dotfiles/.dotfile" >> ~/.zshrc
+    fi
+
 }
 
 function install_macos(){
