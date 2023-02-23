@@ -17,7 +17,7 @@ zsh-users/zsh-autosuggestions
 zsh-users/zsh-syntax-highlighting
 
 # misc
-nobeans/zsh-sdkman
+nobeans/zsh-sdkman kind:fpath
 
 # now, use a plugin that runs compinit for you to initialize your completions
 mattmc3/zephyr path:completion
