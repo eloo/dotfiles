@@ -10,7 +10,7 @@ function install_plugins(){
         install_macos
 
     elif [[ $CURRENT_OS == 'Linux' ]]; then
-        DISTRO=$(bash -c 'cat /etc/*-release | grep ^ID=')
+        DISTRO=$(bash -c 'cat /etc/*-release | grep -a ^ID=')
         if [[ $DISTRO == *'ubuntu'* || $DISTRO == *'debian'* || $DISTRO == *'raspbian'* ]]; then
             install_debian
         fi
