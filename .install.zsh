@@ -10,28 +10,40 @@ function install_plugins(){
         install_macos
 
     elif [[ $CURRENT_OS == 'Linux' ]]; then
-        DISTRO=`cat /etc/*-release | grep ^ID=`
+        DISTRO=$(bash -c 'cat /etc/*-release | grep ^ID=')
         if [[ $DISTRO == *'ubuntu'* || $DISTRO == *'debian'* || $DISTRO == *'raspbian'* ]]; then
             install_debian
         fi
     fi
 
+    git clone --depth=1 https://github.com/mattmc3/antidote.git ${ZDOTDIR:-~}/.antidote
+
+    pip3 install install-release
+    install-release config --path ~/.local/bin
+    install-release get https://github.com/gsamokovarov/jump -y
+
+    curl https://zyedidia.github.io/eget.sh | sh
+    mv eget ~/.local/bin
+    eget gsamokovarov/jump
+
+
+    ZSH= sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+    if grep -Fxq "source ~/dotfiles/.dotfile" ~/.zshrc
+    then
+        # code if found
+    else
+       echo "source ~/dotfiles/.dotfile" >> ~/.zshrc
+    fi
+
 }
 
 function install_macos(){
-    curl -sfL git.io/antibody | sh -s - -b /usr/local/bin
-    brew install jump
+    git clone --depth=1 https://github.com/mattmc3/antidote.git ${ZDOTDIR:-~}/.antidote
 }
 
 function install_debian(){
     sudo apt install curl
-    curl -sfL git.io/antibody | sudo sh -s - -b /usr/local/bin
-    
-    arch=$(dpkg --print-architecture)
-    if [[ $arch == 'amd64' ]]; then     
-        wget https://github.com/gsamokovarov/jump/releases/download/v0.40.0/jump_0.40.0_amd64.deb && sudo dpkg -i jump_0.40.0_amd64.deb && rm jump_0.40.0_amd64.deb
-    fi
-    if [[ $arch == 'armhf' ]]; then 
-        wget https://github.com/gsamokovarov/jump/releases/download/v0.40.0/jump_linux_arm_binary && sudo mv jump_linux_arm_binary /usr/bin/jump && chmod +x /usr/bin/jump
-    fi
+    git clone --depth=1 https://github.com/mattmc3/antidote.git ${ZDOTDIR:-~}/.antidote
 }
+

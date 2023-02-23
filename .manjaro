@@ -2,4 +2,4 @@
 # Manjaro specific config 
 #
 
-antibody bundle robbyrussell/oh-my-zsh path:plugins/archlinux
+antidote bundle ohmyzsh/ohmyzsh path:plugins/archlinux  >> ~/.zsh_plugins.zsh

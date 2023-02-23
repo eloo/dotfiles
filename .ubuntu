@@ -7,7 +7,7 @@ OS_ICON='\uE271'
 # Antibody bundles
 #
 
-antibody bundle robbyrussell/oh-my-zsh path:plugins/ubuntu
+antidote bundle ohmyzsh/ohmyzsh path:plugins/ubuntu >~/.zsh_plugins.zsh
 
 #
 # Ubuntu specific aliases

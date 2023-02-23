@@ -1,0 +1,24 @@
+# .zsh_plugins.txt
+
+## theme
+romkatv/powerlevel10k
+
+# oh my zsh
+ohmyzsh/ohmyzsh path:lib
+
+ohmyzsh/ohmyzsh path:plugins/git
+ohmyzsh/ohmyzsh path:plugins/pip
+ohmyzsh/ohmyzsh path:plugins/aws
+ohmyzsh/ohmyzsh path:plugins/extract
+
+# zsh-users
+zsh-users/zsh-completions
+zsh-users/zsh-autosuggestions
+zsh-users/zsh-syntax-highlighting
+
+# misc
+nobeans/zsh-sdkman
+
+# now, use a plugin that runs compinit for you to initialize your completions
+mattmc3/zephyr path:completion
+

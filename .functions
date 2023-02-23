@@ -280,4 +280,5 @@ function clear-caches(){
 	npm cache clear --force
 	yarn cache clean
 	sudo docker system prune -a
+	sudo pacman -Scc
 }
