@@ -18,6 +18,8 @@ function install_plugins(){
 
     git clone --depth=1 https://github.com/mattmc3/antidote.git ${ZDOTDIR:-~}/.antidote
 
+    python -m ensurepip --upgrade
+
     pip3 install install-release
     install-release config --path ~/.local/bin
     install-release get https://github.com/gsamokovarov/jump -y
@@ -43,7 +45,7 @@ function install_macos(){
 }
 
 function install_debian(){
-    sudo apt install curl
+    sudo apt install curl python3-pip
     git clone --depth=1 https://github.com/mattmc3/antidote.git ${ZDOTDIR:-~}/.antidote
 }
 
