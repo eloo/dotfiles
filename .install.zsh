@@ -35,7 +35,7 @@ function install_plugins(){
     then
         # code if found
     else
-       echo "source ~/dotfiles/.dotfile" >> ~/.zshrc
+        echo "source ~/dotfiles/.dotfile" >> ~/.zshrc
     fi
 
 }
