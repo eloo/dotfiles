@@ -40,4 +40,8 @@ fi
 # antidote theme
 #
 
+function antidote_rebuild() {
+  (antidote bundle <${ZDOTDIR:-~}/dotfiles/.zsh_plugins.txt >|$zsh_plugins)
+  source $zsh_plugins
+}
 
