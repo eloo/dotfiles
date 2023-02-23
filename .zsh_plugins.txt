@@ -12,7 +12,7 @@ ohmyzsh/ohmyzsh path:plugins/aws
 ohmyzsh/ohmyzsh path:plugins/extract
 
 # zsh-users
-zsh-users/zsh-completions
+zsh-users/zsh-completions kind:fpath
 zsh-users/zsh-autosuggestions
 zsh-users/zsh-syntax-highlighting
 
@@ -20,5 +20,4 @@ zsh-users/zsh-syntax-highlighting
 nobeans/zsh-sdkman kind:fpath
 
 # now, use a plugin that runs compinit for you to initialize your completions
-mattmc3/zephyr path:completion
-
+mattmc3/zephyr path:plugins/completion
