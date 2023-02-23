@@ -45,7 +45,7 @@ function install_macos(){
 }
 
 function install_debian(){
-    sudo apt install curl python3-pip
+    sudo apt install -y curl python3-pip
     git clone --depth=1 https://github.com/mattmc3/antidote.git ${ZDOTDIR:-~}/.antidote
 }
 
