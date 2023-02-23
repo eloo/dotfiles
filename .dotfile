@@ -48,7 +48,7 @@ elif [[ $CURRENT_OS == 'Linux' ]]; then
     [ -f ~/dotfiles/.linux.zsh ] && source ~/dotfiles/.linux.zsh
 
 
-    DISTRO=$(bash -c 'cat /etc/*-release | grep ^ID=')
+    DISTRO=$(bash -c 'cat /etc/*-release | grep -a ^ID=')
     # Load ubuntu specific stuff (and for debian as there isn't much atm)
     if [[ $DISTRO == *'ubuntu'* || $DISTRO == *'debian'* || $DISTRO == *'raspbian'* || $DISTRO == *'osmc'* ]]; then
         [ -f ~/dotfiles/.ubuntu ] && source ~/dotfiles/.ubuntu
