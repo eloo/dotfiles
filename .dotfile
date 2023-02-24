@@ -2,7 +2,7 @@
 
 # ENVS
 export EGET_BIN=~/.local/bin
-export PATH=~/.local/bin:~/.yarn/bin:$PATH
+export PATH=~/.local/bin:~/.yarn/bin:$GOPATH/bin:$PATH
 
 #source <(antibody init)
 
