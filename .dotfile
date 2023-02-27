@@ -4,7 +4,8 @@
 export EGET_BIN=~/.local/bin
 export PATH=~/.local/bin:~/.yarn/bin:$GOPATH/bin:$PATH
 
-#source <(antibody init)
+# Sourcing tools
+[[ ! -f $HOME/.sdkman/bin/sdkman-init.sh ]] || source $HOME/.sdkman/bin/sdkman-init.sh
 
 # source antidote
 source ${ZDOTDIR:-~}/.antidote/antidote.zsh
