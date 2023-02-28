@@ -3,7 +3,6 @@
 #
 # Exports
 #
-export JAVA_HOME=$(/usr/libexec/java_home)
 export PATH=${HOME}/.krew/bin:$PATH
 export PATH=${HOME}/.kubectl-plugins:$PATH
 
