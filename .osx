@@ -22,7 +22,8 @@ alias brew_update="brew -v update; brew upgrade --force-bottle; brew cleanup; br
 #
 
 alias ll='ls -alhG'
-alias docker="lima nerdctl" 
+# alias docker="lima nerdctl" 
+alias docker="podman" 
 
 #
 # OS X functions
