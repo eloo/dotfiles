@@ -61,4 +61,10 @@ elif [[ $CURRENT_OS == 'Linux' ]]; then
     fi
 fi
 
+if command -v kubectl &> /dev/null
+then
+    alias k=kubectl
+    export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+fi    
+
 autoload -Uz compinit && compinit
