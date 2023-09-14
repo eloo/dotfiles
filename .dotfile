@@ -2,7 +2,7 @@
 
 # ENVS
 export EGET_BIN=~/.local/bin
-export PATH=~/bin/:~/.local/bin:~/.yarn/bin:$GOPATH/bin:$PATH
+export PATH=~/bin/:~/.local/bin:~/.yarn/bin:$HOME/go/bin:$GOPATH/bin:$PATH
 
 # Sourcing tools
 [[ ! -f $HOME/.sdkman/bin/sdkman-init.sh ]] || source $HOME/.sdkman/bin/sdkman-init.sh
@@ -35,6 +35,13 @@ for file in ~/dotfiles/.{antidote.zsh,powerlevel10k.zsh,extra,exports,aliases,fu
     [ -r "$file" ] && source "$file"
 done
 unset file
+
+# Load kubernetes if kubectl is installed
+if command -v kubectl &> /dev/null
+then
+    [ -f ~/dotfiles/.k8s.zsh ] && source ~/dotfiles/.k8s.zsh
+fi
+
 
 # Get OS name
 CURRENT_OS=`uname`
