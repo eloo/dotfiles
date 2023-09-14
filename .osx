@@ -3,7 +3,6 @@
 #
 # Exports
 #
-export JAVA_HOME=$(/usr/libexec/java_home)
 export PATH=${HOME}/.krew/bin:$PATH
 export PATH=${HOME}/.kubectl-plugins:$PATH
 
@@ -23,30 +22,41 @@ alias brew_update="brew -v update; brew upgrade --force-bottle; brew cleanup; br
 #
 
 alias ll='ls -alhG'
-alias docker="lima nerdctl" 
+# alias docker="lima nerdctl"
+# alias docker="podman"
+alias docker-compose="podman-compose"
+
+function docker() {
+    if [ "$1" = compose ]; then
+        shift
+        command podman-compose "$@"
+    else 
+        command podman "$@"
+    fi
+}
 
 #
 # OS X functions
 #
 
-function localip(){
-	ifconfig | grep "inet " | grep -Fv 127.0.0.1 | awk '{print $2}'
+function localip() {
+    ifconfig | grep "inet " | grep -Fv 127.0.0.1 | awk '{print $2}'
 }
 
-ports (){
+ports() {
     netstat -Watnlv | grep LISTEN | awk '{"ps -o comm= -p " $9 | getline procname;colred="\033[01;31m";colclr="\033[0m"; print colred "proto: " colclr $1 colred " | addr.port: " colclr $4 colred " | pid: " colclr $9 colred " | name: " colclr procname;  }' | column -t -s "|"
 }
 
 # Kills the process behind the passed port number
-function killp(){
-  kill $(lsof -nP -i:$1 | grep LISTEN | awk -F ' ' '{print $2}') || true
-# netstat -Watnlv | grep LISTEN | awk '{"ps -o comm= -p " $9 | getline procname; print "addr.port: " $4 " | pid: " $9 " " ;  }' | grep $1 | awk '{print $5}' | xargs kill -9
+function killp() {
+    kill $(lsof -nP -i:$1 | grep LISTEN | awk -F ' ' '{print $2}') || true
+    # netstat -Watnlv | grep LISTEN | awk '{"ps -o comm= -p " $9 | getline procname; print "addr.port: " $4 " | pid: " $9 " " ;  }' | grep $1 | awk '{print $5}' | xargs kill -9
 }
 
 # Update all casks
 caskup() {
-  rm -rf "$(brew --cache)"
-  brew update
-  brew cask uninstall --force "$@"
-  brew cask install "$@"
+    rm -rf "$(brew --cache)"
+    brew update
+    brew cask uninstall --force "$@"
+    brew cask install "$@"
 }
