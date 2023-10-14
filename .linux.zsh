@@ -1,5 +1,6 @@
 # Aliases
 alias ll='ls -alh'
+alias dns='( nmcli dev list || nmcli dev show ) 2>/dev/null | grep DNS'
 
 # Functions
 
