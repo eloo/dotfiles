@@ -49,7 +49,7 @@ then
 fi
 
 # Aliases for task https://github.com/go-task/task     
-if command -v k3d &> /dev/null
+if command -v go-task &> /dev/null
 then
     alias task='go-task'
 fi
