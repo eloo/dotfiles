@@ -47,3 +47,9 @@ if command -v k3d &> /dev/null
 then
     alias k3dsa='k3d cluster stop --all'
 fi
+
+# Aliases for task https://github.com/go-task/task     
+if command -v k3d &> /dev/null
+then
+    alias task='go-task'
+fi
