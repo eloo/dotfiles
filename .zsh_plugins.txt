@@ -22,7 +22,7 @@ zsh-users/zsh-syntax-highlighting
 # misc
 nobeans/zsh-sdkman kind:fpath
 djui/alias-tips
-sawadashota/go-task-completions path:plugins/task
+sawadashota/go-task-completions kind:fpath
 
 # now, use a plugin that runs compinit for you to initialize your completions
 mattmc3/zephyr path:plugins/completion
