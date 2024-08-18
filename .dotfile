@@ -42,6 +42,12 @@ then
     [ -f ~/dotfiles/.k8s.zsh ] && source ~/dotfiles/.k8s.zsh
 fi
 
+# Load kubernetes if kubectl is installed
+if command -v k3s &> /dev/null
+then
+    [ -f ~/dotfiles/.k3s.zsh ] && source ~/dotfiles/.k3s.zsh
+fi
+
 
 # Get OS name
 CURRENT_OS=`uname`
