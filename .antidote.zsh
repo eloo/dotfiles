@@ -35,6 +35,7 @@ else
     eval "$(jump shell --bind=z)"
 fi
 
+eval "$(task --completion zsh)"
 
 function antidote_rebuild() {
     (antidote bundle <${ZDOTDIR:-~}/dotfiles/.zsh_plugins.txt >|$zsh_plugins)
