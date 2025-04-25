@@ -16,32 +16,28 @@ zsh_plugins=${ZDOTDIR:-~}/.zsh_plugins.zsh
 fpath+=(${ZDOTDIR:-~}/.antidote)
 autoload -Uz $fpath[-1]/antidote
 
-# Generate static file in a subshell when .zsh_plugins.txt is updated.
-if [[ ! $zsh_plugins -nt ${ZDOTDIR:-~}/dotfiles/.zsh_plugins.zsh ]]; then
-  (antidote bundle <${ZDOTDIR:-~}/dotfiles/.zsh_plugins.txt >|$zsh_plugins)
+#
+# antidote Bundles
+#
+# Generate a new static file whenever .zsh_plugins.txt is updated.
+if [[ ! ${zsh_plugins} -nt ${ZDOTDIR:-~}/dotfiles/.zsh_plugins.txt ]]; then
+    antidote bundle <${ZDOTDIR:-~}/dotfiles/.zsh_plugins.txt >|${zsh_plugins}
 fi
 
 # Source your static plugins file.
 source $zsh_plugins
 
-#
-# antidote Bundles
-#
 DISABLE_UPDATE_PROMPT=true
 DISABLE_AUTO_UPDATE=true
 
 if ! type jump > /dev/null; then
-    antidote bundle agkozak/zsh-z
 else
     eval "$(jump shell --bind=z)"
 fi
 
-#
-# antidote theme
-#
 
 function antidote_rebuild() {
-  (antidote bundle <${ZDOTDIR:-~}/dotfiles/.zsh_plugins.txt >|$zsh_plugins)
-  source $zsh_plugins
+    (antidote bundle <${ZDOTDIR:-~}/dotfiles/.zsh_plugins.txt >|$zsh_plugins)
+    source $zsh_plugins
 }
 

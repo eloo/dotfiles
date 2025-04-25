@@ -1,5 +1,7 @@
 # OS X Antibody configuration
 
+autoload -Uz compinit && compinit
+
 #
 # Exports
 #
@@ -9,8 +11,6 @@ export PATH=${HOME}/.kubectl-plugins:$PATH
 #
 # Antibody bundles
 #
-
-antidote bundle ohmyzsh/ohmyzsh path:plugins/brew >>~/.zsh_plugins.zsh
 
 # Full brew update
 alias brew_update="brew -v update; brew upgrade --force-bottle; brew cleanup; brew doctor"
@@ -24,16 +24,16 @@ alias brew_update="brew -v update; brew upgrade --force-bottle; brew cleanup; br
 alias ll='ls -alhG'
 # alias docker="lima nerdctl"
 # alias docker="podman"
-alias docker-compose="podman-compose"
+# alias docker-compose="podman-compose"
 
-function docker() {
-    if [ "$1" = compose ]; then
-        shift
-        command podman-compose "$@"
-    else 
-        command podman "$@"
-    fi
-}
+# function docker() {
+#     if [ "$1" = compose ]; then
+#         shift
+#         command podman-compose "$@"
+#     else 
+#         command podman "$@"
+#     fi
+# }
 
 #
 # OS X functions
@@ -59,4 +59,23 @@ caskup() {
     brew update
     brew cask uninstall --force "$@"
     brew cask install "$@"
+}
+
+function idea() {
+    open -a "IntelliJ IDEA" "$1"
+}
+
+function goland() {
+    open -a "Goland" "$1"
+}
+
+function fixPos1End(){
+    mkdir -p ~/Library/KeyBindings
+    # shellcheck disable=SC2028
+    echo '{
+    "\\UF729"  = moveToBeginningOfLine:; // home
+    "\\UF72B"  = moveToEndOfLine:; // end
+    "$\\UF729" = moveToBeginningOfLineAndModifySelection:; // shift-home
+    "$\\UF72B" = moveToEndOfLineAndModifySelection:; // shift-end
+}' > ~/Library/KeyBindings/DefaultKeyBinding.dict
 }
