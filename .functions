@@ -5,10 +5,14 @@ function md() {
 	mkdir -p "$@" && cd "$@"
 }
 
-
 # find shorthand
 function f() {
 	find . -name "$1" 2>&1 | grep -v 'Permission denied'
+}
+
+# interactive history search
+function fh() {
+    eval $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed 's/ *[0-9]* *//')
 }
 
 # Start an HTTP server from a directory, optionally specifying the port
