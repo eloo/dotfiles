@@ -6,4 +6,11 @@ alias crossplane-unsynced="k get managed -o=jsonpath='{.items[?(@.status.conditi
 alias ky="kubectl -o yaml"
 alias kgsecd='kubectl get secret -o go-template='"'"'{{range $k,$v := .data}}{{printf "%s: " $k}}{{if not $v}}{{$v}}{{else}}{{$v | base64decode}}{{end}}{{"\n"}}{{end}}'"'"''
 
+
+# Alias for codium
+if command -v codium &> /dev/null
+then
+    export KUBE_EDITOR=codium
+fi
+
 compinit
