@@ -2,7 +2,7 @@
 
 # ENVS
 export EGET_BIN=~/.local/bin
-export PATH=~/bin/:~/.local/bin:~/.yarn/bin:$HOME/go/bin:$GOPATH/bin:$PATH
+export PATH=/usr/bin:~/bin/:~/.local/bin:~/.yarn/bin:$HOME/go/bin:$GOPATH/bin:$PATH
 
 # Sourcing tools
 [[ ! -f $HOME/.sdkman/bin/sdkman-init.sh ]] || source $HOME/.sdkman/bin/sdkman-init.sh
