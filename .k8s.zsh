@@ -10,7 +10,7 @@ alias kgsecd='kubectl get secret -o go-template='"'"'{{range $k,$v := .data}}{{p
 # Alias for codium
 if command -v codium &> /dev/null
 then
-    export KUBE_EDITOR=codium
+    export KUBE_EDITOR="codium --wait"
 fi
 
 compinit
