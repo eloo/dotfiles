@@ -8,6 +8,10 @@ alias kgsecd='kubectl get secret -o go-template='"'"'{{range $k,$v := .data}}{{p
 
 alias k8s-not-running="kubectl get pods -A -o wide | grep -v Running"
 
-antidote bundle ohmyzsh/ohmyzsh path:plugins/kubectl >>~/.zsh_plugins.zsh
+# Alias for codium
+if command -v codium &> /dev/null
+then
+    export KUBE_EDITOR="codium --wait"
+fi
 
 compinit

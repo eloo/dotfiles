@@ -28,7 +28,7 @@ export TERM="xterm-256color"
 # Do fully highlight directories
 export LS_COLORS="ow=1;34:tw=1;34:"
 
-# Load our dotfiles like ~/.antibody, etc…
+# Load our dotfiles like ~/.antidote, etc…
 #   ~/dotfiles/.extra and ~/dotfiles/.local can be used for settings you don’t want to commit,
 #   Use it to configure your PATH, thus it being first in line.
 for file in ~/dotfiles/.{antidote.zsh,powerlevel10k.zsh,extra,exports,aliases,functions,local,install.zsh}; do
