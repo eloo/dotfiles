@@ -1,3 +1,7 @@
+if [[ ${DEBUG_ZSH} ]]; then
+    echo "[$(date +%H:%M:%S)] Loading k8s dotfile configuration..."
+fi
+
 
 ### Crossplane
 alias crossplane-unsynced="k get managed -o=jsonpath='{.items[?(@.status.conditions[1].status==\"False\")]}' | jq --raw-output '[.kind, .metadata.name, .status.conditions[1].message] | @tsv'"

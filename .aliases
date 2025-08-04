@@ -1,5 +1,9 @@
 # Aliases
 
+if [[ ${DEBUG_ZSH} ]]; then
+    echo "[$(date +%H:%M:%S)] Loading aliases dotfile configuration..."
+fi
+
 ###
 
 # ls options: A = include hidden (but not . or ..), F = put `/` after folders, h = byte unit suffixes
@@ -42,13 +46,13 @@ then
     alias code=codium
 fi
 
-# Aliases for k3d     
+# Aliases for k3d
 if command -v k3d &> /dev/null
 then
     alias k3dsa='k3d cluster stop --all'
 fi
 
-# Aliases for task https://github.com/go-task/task     
+# Aliases for task https://github.com/go-task/task
 if command -v go-task &> /dev/null
 then
     alias task='go-task'

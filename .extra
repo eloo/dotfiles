@@ -1,4 +1,8 @@
 # Add history ignore pattern
+if [[ ${DEBUG_ZSH} ]]; then
+    echo "[$(date +%H:%M:%S)] Loading extra dotfile configuration..."
+fi
+
 HISTORY_IGNORE="(encryptString|*htpasswd) *"
 
 alias dupdate="docker compose pull && docker compose up -d"

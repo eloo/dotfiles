@@ -1,3 +1,8 @@
+
+if [[ ${DEBUG_ZSH} ]]; then
+    echo "[$(date +%H:%M:%S)] Loading powerlevel10k dotfile configuration..."
+fi
+
 # Additional powerlevel10k configuration
 typeset -g POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(status os_icon context dir dir_writable vcs)
 typeset -g POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(command_execution_time time)

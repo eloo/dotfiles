@@ -1,27 +1,20 @@
 # Ubuntu specific dotfile for zsh
 
+if [[ ${DEBUG_ZSH} ]]; then
+    echo "[$(date +%H:%M:%S)] Loading ubuntu dotfile configuration..."
+fi
+
 # Workaround for missing distro icons
 OS_ICON='\uE271'
-
-#
-# Antibody bundles
-#
-
-antidote bundle ohmyzsh/ohmyzsh path:plugins/ubuntu >~/.zsh_plugins.zsh
 
 #
 # Ubuntu specific aliases
 #
 
-alias ports='sudo netstat -tulpen'
 
 #
 # Ubuntu functions
 #
-
-function localip(){
-  echo "📶  "$(ip addr show | grep "inet\b" | awk '{print $2}' | cut -d/ -f1)
-}
 
 function apt-history(){
       case "$1" in

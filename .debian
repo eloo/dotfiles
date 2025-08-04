@@ -2,6 +2,11 @@
 # Debian specific config 
 #
 
+if [[ ${DEBUG_ZSH} ]]; then
+    echo "[$(date +%H:%M:%S)] Loading Debian dotfile configuration..."
+fi
+
+
 alias fail2ban-jails="sudo fail2ban-client status | grep \"Jail list:\" | sed \"s/ //g\" | awk '{split(\$2,a,\",\");for(i in a) system(\"sudo fail2ban-client status \" a[i])}' | grep \"Status\|IP list\""
 
 alias fail2ban-jails-details="sudo sh -c \"fail2ban-client status | sed -n 's/,//g;s/.*Jail list://p' | xargs -n1 fail2ban-client status\""

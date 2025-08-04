@@ -2,6 +2,10 @@
 # Global antidote configuration
 #
 
+if [[ ${DEBUG_ZSH} ]]; then
+    echo "[$(date +%H:%M:%S)] Loading antidote dotfile configuration..."
+fi
+
 #
 # Load various lib files
 #
@@ -21,6 +25,9 @@ autoload -Uz $fpath[-1]/antidote
 #
 # Generate a new static file whenever .zsh_plugins.txt is updated.
 if [[ ! ${zsh_plugins} -nt ${ZDOTDIR:-~}/dotfiles/.zsh_plugins.txt ]]; then
+    if [[ ${DEBUG_ZSH} ]]; then
+        echo "[$(date +%H:%M:%S)] Generate antidote '$HOME/.zsh_plugins.zsh'"
+    fi
     antidote bundle <${ZDOTDIR:-~}/dotfiles/.zsh_plugins.txt >|${zsh_plugins}
 fi
 
