@@ -1,6 +1,6 @@
 
 if [[ ${DEBUG_ZSH} ]]; then
-    echo "[$(date +%H:%M:%S)] Loading Linux dotfile configuration..."
+    echo "[$(date +%H:%M:%S.%3N)] Loading Linux dotfile configuration..."
 fi
 
 

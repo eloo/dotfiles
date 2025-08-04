@@ -1,7 +1,7 @@
 # Aliases
 
 if [[ ${DEBUG_ZSH} ]]; then
-    echo "[$(date +%H:%M:%S)] Loading aliases dotfile configuration..."
+    echo "[$(date +%H:%M:%S.%3N)] Loading aliases dotfile configuration..."
 fi
 
 ###

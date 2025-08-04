@@ -1,6 +1,6 @@
 
 if [[ ${DEBUG_ZSH} ]]; then
-    echo "[$(date +%H:%M:%S)] Loading powerlevel10k dotfile configuration..."
+    echo "[$(date +%H:%M:%S.%3N)] Loading powerlevel10k dotfile configuration..."
 fi
 
 # Additional powerlevel10k configuration

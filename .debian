@@ -3,7 +3,7 @@
 #
 
 if [[ ${DEBUG_ZSH} ]]; then
-    echo "[$(date +%H:%M:%S)] Loading Debian dotfile configuration..."
+    echo "[$(date +%H:%M:%S.%3N)] Loading Debian dotfile configuration..."
 fi
 
 

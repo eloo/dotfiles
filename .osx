@@ -1,6 +1,6 @@
 # OS X Antibody configuration
 if [[ ${DEBUG_ZSH} ]]; then
-    echo "[$(date +%H:%M:%S)] Loading OS X dotfile configuration..."
+    echo "[$(date +%H:%M:%S.%3N)] Loading OS X dotfile configuration..."
 fi
 
 autoload -Uz compinit && compinit

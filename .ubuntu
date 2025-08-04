@@ -1,7 +1,7 @@
 # Ubuntu specific dotfile for zsh
 
 if [[ ${DEBUG_ZSH} ]]; then
-    echo "[$(date +%H:%M:%S)] Loading ubuntu dotfile configuration..."
+    echo "[$(date +%H:%M:%S.%3N)] Loading ubuntu dotfile configuration..."
 fi
 
 # Workaround for missing distro icons

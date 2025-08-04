@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 if [[ ${DEBUG_ZSH} ]]; then
-    echo "[$(date +%H:%M:%S)] Loading install dotfile configuration..."
+    echo "[$(date +%H:%M:%S.%3N)] Loading install dotfile configuration..."
 fi
 
 function install_plugins(){

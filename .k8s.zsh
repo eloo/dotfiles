@@ -1,5 +1,5 @@
 if [[ ${DEBUG_ZSH} ]]; then
-    echo "[$(date +%H:%M:%S)] Loading k8s dotfile configuration..."
+    echo "[$(date +%H:%M:%S.%3N)] Loading k8s dotfile configuration..."
 fi
 
 
