@@ -42,7 +42,10 @@ else
     eval "$(jump shell --bind=z)"
 fi
 
-eval "$(task --completion zsh)"
+if command -v task &> /dev/null
+then
+    eval "$(task --completion zsh)"
+fi
 
 function antidote_rebuild() {
     (antidote bundle <${ZDOTDIR:-~}/dotfiles/.zsh_plugins.txt >|$zsh_plugins)
