@@ -29,6 +29,10 @@ if [[ ! ${zsh_plugins} -nt ${ZDOTDIR:-~}/dotfiles/.zsh_plugins.txt ]]; then
         echo "[$(date +%H:%M:%S.%3N)] Generate antidote '$HOME/.zsh_plugins.zsh'"
     fi
     antidote bundle <${ZDOTDIR:-~}/dotfiles/.zsh_plugins.txt >|${zsh_plugins}
+    else
+    if [[ ${DEBUG_ZSH} ]]; then
+        echo "[$(date +%H:%M:%S.%3N)] Antidote '$HOME/.zsh_plugins.zsh' is up to date."
+    fi
 fi
 
 # Source your static plugins file.
