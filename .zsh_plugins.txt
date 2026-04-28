@@ -23,7 +23,6 @@ zsh-users/zsh-syntax-highlighting
 # misc
 nobeans/zsh-sdkman kind:fpath
 djui/alias-tips
-sawadashota/go-task-completions kind:fpath
 ohmyzsh/ohmyzsh path:plugins/kubectl
 ohmyzsh/ohmyzsh path:plugins/brew
 

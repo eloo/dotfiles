@@ -46,9 +46,10 @@ else
     eval "$(jump shell --bind=z)"
 fi
 
-if command -v task &> /dev/null
+if command -v go-task &> /dev/null
 then
-    eval "$(task --completion zsh)"
+    export TASK_EXE='go-task'
+    eval "$(go-task --completion zsh)"
 fi
 
 function antidote_rebuild() {
