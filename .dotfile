@@ -1,8 +1,12 @@
 #!/bin/zsh
 
+if [[ ${DEBUG_ZSH} ]]; then
+    echo "[$(date +%H:%M:%S.%3N)] Loading Dotfile dotfile configuration..."
+fi
+
 # ENVS
 export EGET_BIN=~/.local/bin
-export PATH=~/bin/:~/.local/bin:~/.yarn/bin:$HOME/go/bin:$GOPATH/bin:$PATH
+export PATH=/usr/bin:~/bin/:~/.local/bin:~/.yarn/bin:$HOME/go/bin:$GOPATH/bin:$PATH
 
 # Sourcing tools
 [[ ! -f $HOME/.sdkman/bin/sdkman-init.sh ]] || source $HOME/.sdkman/bin/sdkman-init.sh
@@ -34,6 +38,12 @@ unset file
 if command -v kubectl &> /dev/null
 then
     [ -f ~/dotfiles/.k8s.zsh ] && source ~/dotfiles/.k8s.zsh
+fi
+
+# Load kubernetes if kubectl is installed
+if command -v k3s &> /dev/null
+then
+    [ -f ~/dotfiles/.k3s.zsh ] && source ~/dotfiles/.k3s.zsh
 fi
 
 
@@ -71,5 +81,3 @@ then
     alias k=kubectl
     export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 fi    
-
-autoload -Uz compinit && compinit

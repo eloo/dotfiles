@@ -1,5 +1,0 @@
-#
-# Manjaro specific config 
-#
-
-antidote bundle ohmyzsh/ohmyzsh path:plugins/archlinux  >> ~/.zsh_plugins.zsh

@@ -1,3 +1,7 @@
+if [[ ${DEBUG_ZSH} ]]; then
+    echo "[$(date +%H:%M:%S.%3N)] Loading k8s dotfile configuration..."
+fi
+
 
 ### Crossplane
 alias crossplane-unsynced="k get managed -o=jsonpath='{.items[?(@.status.conditions[1].status==\"False\")]}' | jq --raw-output '[.kind, .metadata.name, .status.conditions[1].message] | @tsv'"
@@ -6,6 +10,7 @@ alias crossplane-unsynced="k get managed -o=jsonpath='{.items[?(@.status.conditi
 alias ky="kubectl -o yaml"
 alias kgsecd='kubectl get secret -o go-template='"'"'{{range $k,$v := .data}}{{printf "%s: " $k}}{{if not $v}}{{$v}}{{else}}{{$v | base64decode}}{{end}}{{"\n"}}{{end}}'"'"''
 
+alias k8s-not-running="kubectl get pods -A -o wide | grep -v Running"
 
 # Alias for codium
 if command -v codium &> /dev/null
