@@ -13,7 +13,7 @@ export PATH=${HOME}/.kubectl-plugins:$PATH
 #
 
 # Full brew update
-alias brew_update="brew -v update; brew upgrade --force-bottle; brew cleanup; brew doctor"
+alias brew_update="brew -v update; brew upgrade --force-bottle --greedy; brew cleanup; brew doctor"
 
 # Useful env variables
 
