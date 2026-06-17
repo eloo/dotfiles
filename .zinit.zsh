@@ -44,9 +44,13 @@ zinit ice as"null" fpath"."; zinit light nobeans/zsh-sdkman
 zinit light djui/alias-tips
 zinit ice as"null" fpath"."; zinit light sawadashota/go-task-completions
 
-# Initialize completions (replaces mattmc3/zephyr path:plugins/completion)
+# Initialize completion once (after all plugins/snippets added to fpath).
+zmodload zsh/complist
 autoload -Uz compinit && compinit
 zinit cdreplay -q
+
+# Enable interactive completion menu so arrow keys can navigate candidates.
+zstyle ':completion:*' menu select
 
 DISABLE_UPDATE_PROMPT=true
 DISABLE_AUTO_UPDATE=true
