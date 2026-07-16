@@ -11,12 +11,6 @@ export PATH=/usr/bin:~/bin/:~/.local/bin:~/.yarn/bin:$HOME/go/bin:$GOPATH/bin:$P
 # Sourcing tools
 [[ ! -f $HOME/.sdkman/bin/sdkman-init.sh ]] || source $HOME/.sdkman/bin/sdkman-init.sh
 
-# source antidote
-source ${ZDOTDIR:-~}/.antidote/antidote.zsh
-
-# initialize plugins statically with ${ZDOTDIR:-~}/.zsh_plugins.txt
-antidote load
-
 #
 # This is the main dotfiles which will source all other dotfiles.
 # Only this file must be sourced in your ~/.zshrc
@@ -32,10 +26,10 @@ export TERM="xterm-256color"
 # Do fully highlight directories
 export LS_COLORS="ow=1;34:tw=1;34:"
 
-# Load our dotfiles like ~/.antidote, etc…
+# Load dotfiles modules.
 #   ~/dotfiles/.extra and ~/dotfiles/.local can be used for settings you don’t want to commit,
 #   Use it to configure your PATH, thus it being first in line.
-for file in ~/dotfiles/.{antidote.zsh,plugins.zsh,powerlevel10k.zsh,extra,exports,aliases,functions,local,install.zsh}; do
+for file in ~/dotfiles/.{zinit.zsh,powerlevel10k.zsh,extra,exports,aliases,functions,local,install.zsh}; do
     [ -r "$file" ] && source "$file"
 done
 unset file
@@ -87,5 +81,3 @@ then
     alias k=kubectl
     export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 fi    
-
-autoload -Uz compinit && compinit

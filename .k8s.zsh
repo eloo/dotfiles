@@ -17,5 +17,3 @@ if command -v codium &> /dev/null
 then
     export KUBE_EDITOR="codium --wait"
 fi
-
-compinit

@@ -11,7 +11,7 @@ function install_plugins(){
 
     install_eget
     
-    eget gsamokovarov/jump
+    # eget gsamokovarov/jump
     eget junegunn/fzf
 
     # OS specific plugins
@@ -28,10 +28,12 @@ function install_plugins(){
         fi
     fi
 
-    if [[ -d "${ZDOTDIR:-$HOME}/.antidote" ]]; then
-        echo "Antidote is already installed."
+    local zinit_home="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+    if [[ -d "$zinit_home" ]]; then
+        echo "Zinit is already installed."
     else
-        git clone --depth=1 https://github.com/mattmc3/antidote.git ${ZDOTDIR:-~}/.antidote
+        mkdir -p "$(dirname "$zinit_home")"
+        git clone --depth=1 https://github.com/zdharma-continuum/zinit.git "$zinit_home"
     fi
 
     install-release config --path ~/.local/bin
