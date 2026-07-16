@@ -33,25 +33,52 @@ function renameMediaFilesToDateTimeOriginalWithFolders(){
 }
 
 function ocr-pdf(){
-    # Usage: ocr-pdf [-r] <file|directory>
-    if [[ "$1" == "-r" ]]; then
-        shift
-        target=${1:-.}
-        if [[ -d "$target" ]]; then
-            find "$target" -type f -iname '*.pdf' -print0 | while IFS= read -r -d '' file; do
-                ocr-pdf "$file"
-            done
-            return
-        else
-            # if target is a file, fall through to process it
-            :
-        fi
-    fi
+    # Usage: ocr-pdf [-r] [-f] <file|directory>
+    local recursive=false
+    local force=false
+
+    while [[ "$#" -gt 0 ]]; do
+        case "$1" in
+            -r)
+                recursive=true
+                shift
+                ;;
+            -f)
+                force=true
+                shift
+                ;;
+            --)
+                shift
+                break
+                ;;
+            -* )
+                echo "Usage: ocr-pdf [-r] [-f] <file|directory>"
+                return 1
+                ;;
+            *)
+                break
+                ;;
+        esac
+    done
 
     file="$1"
     if [[ -z "$file" ]]; then
-        echo "Usage: ocr-pdf [-r] <file|directory>"
+        echo "Usage: ocr-pdf [-r] [-f] <file|directory>"
         return 1
+    fi
+
+    if [[ "$recursive" == true ]]; then
+        target="$file"
+        if [[ -d "$target" ]]; then
+            find "$target" -type f -iname '*.pdf' -print0 | while IFS= read -r -d '' file; do
+                if [[ "$force" == true ]]; then
+                    ocr-pdf -f "$file"
+                else
+                    ocr-pdf "$file"
+                fi
+            done
+            return
+        fi
     fi
 
     if [[ -d "$file" ]]; then
@@ -63,25 +90,35 @@ function ocr-pdf(){
     filename="${file%.*}"
     tmpfile="${filename}-ocr.${extension}"
 
-    # If pdftotext is available, use it to detect an existing text layer and skip OCR if present.
-    if command -v pdftotext >/dev/null 2>&1; then
-        # Count non-whitespace characters to avoid false positives from newlines
-        textchars=$(pdftotext "$file" - 2>/dev/null | tr -d '[:space:]' | wc -c)
-        if [[ $? -ne 0 ]]; then
-            echo "ocr-pdf: pdftotext failed on '$file'; proceeding with ocrmypdf --skip-text."
-        elif [[ "$textchars" -gt 0 ]]; then
-            echo "ocr-pdf: '$file' already contains selectable text; skipping."
-            return 0
-        fi
+    if [[ "$force" == true ]]; then
+        echo "ocr-pdf: forcing OCR update for '$file'."
+        ocrmypdf_flags=("--force-ocr")
     else
-        echo "ocr-pdf: 'pdftotext' not found; will run ocrmypdf with --skip-text to avoid double OCR."
+        ocrmypdf_flags=("--skip-text")
     fi
 
-    # Run OCR, skipping pages that already contain text. Removed deprecated --jbig2-lossy option.
-    if ocrmypdf -l deu --skip-text --optimize 3 "$file" "$tmpfile"; then
+    if [[ "$force" != true ]]; then
+        if command -v pdftotext >/dev/null 2>&1; then
+            # Count non-whitespace characters to avoid false positives from newlines
+            textchars=$(pdftotext "$file" - 2>/dev/null | tr -d '[:space:]' | wc -c)
+            if [[ $? -ne 0 ]]; then
+                echo "ocr-pdf: pdftotext failed on '$file'; proceeding with ocrmypdf ${ocrmypdf_flags[*]}."
+            elif [[ "$textchars" -gt 0 ]]; then
+                echo "ocr-pdf: '$file' already contains selectable text; skipping."
+                return 0
+            fi
+        else
+            echo "ocr-pdf: 'pdftotext' not found; will run ocrmypdf with ${ocrmypdf_flags[*]} to avoid double OCR."
+        fi
+    fi
+
+    # Run OCR, optionally forcing OCR of pages with existing text.
+    if ocrmypdf -l deu "${ocrmypdf_flags[@]}" --optimize 2 "$file" "$tmpfile"; then
         # Keep the processed output as "<name>-ocr.pdf" and also overwrite the original file.
         if cp -f "$tmpfile" "$file"; then
             echo "ocr-pdf: created output '$tmpfile' and updated '$file'"
+            # remove temporary OCR output when successful
+            [[ -f "$tmpfile" ]] && rm -f "$tmpfile"
         else
             echo "ocr-pdf: failed to overwrite original '$file' after OCR"
             [[ -f "$tmpfile" ]] && rm -f "$tmpfile"
