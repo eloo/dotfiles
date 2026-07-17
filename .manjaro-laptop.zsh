@@ -1,5 +1,7 @@
 # Manjaro Zsh Configuration
 
+zinit snippet OMZP::archlinux
+
 if [[ ${DEBUG_ZSH} ]]; then
     echo "[$(date +%H:%M:%S.%3N)] Loading Manjaro dotfile configuration..."
 fi
